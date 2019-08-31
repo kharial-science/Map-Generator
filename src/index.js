@@ -14,7 +14,7 @@ class App extends Component {
             <div>
                 <h1>Hello World !</h1>
                 <p>Here is the kfs prototype to map generation</p>
-                <Map width={500}/>
+                <Map width={20}/>
             </div>
         )
     }

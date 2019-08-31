@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+}
+
+.map-container {
+    width: 80vh;
+    height: 80vh;
+}
+
+.map {
+    width: 100%;
+    height: 100%;
+    display: grid;
+}
+
+.chunk {
+    width: 100%;
+    height: 100%;
+}
+
+.ocean {
+    background-color: lightblue;
+}
+
+.plains {
+    background-color: lightgreen;
+}
