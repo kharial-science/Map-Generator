@@ -14,7 +14,7 @@ class App extends Component {
             <div>
                 <h1>Hello World !</h1>
                 <p>Here is the kfs prototype to map generation</p>
-                <Map width={20}/>
+                <Map width={100} availableBiomes={['ocean', 'ocean', 'ocean', 'ocean', 'plains', 'plains', 'plains', 'swamp']} />
             </div>
         )
     }

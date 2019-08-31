@@ -7,7 +7,7 @@ class Chunk extends Component {
 
     render() {
         return (
-            <div className={`chunk ${this.props.biome}`}></div>
+            <div className={`chunk ${this.props.biome} ${this.props.status}`}></div>
         )
     }
 }
