@@ -1,15 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class Chunk extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return (
-            <div className={`chunk ${this.props.biome} ${this.props.status}`}></div>
-        )
-    }
+function Chunk(props) {
+    return (
+        <div className={`chunk ${props.biome} ${props.status}`}></div>
+    )
 }
 
 export default Chunk

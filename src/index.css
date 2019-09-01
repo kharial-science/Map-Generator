@@ -23,7 +23,29 @@ body {
     grid-template-rows: 17vh [map-start] 80vh [map-end] 3vh
 }
 
-.reRenderButton {
+
+/*  2. header design
+*/
+
+.header {
+    grid-column: middle-start / middle-end;
+}
+
+
+/*  3. left-column design
+*/
+
+.map-infos {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    grid-column: left-start / left-end;
+    grid-row: map-start;
+}
+
+.map-infos>button,
+.map-infos>label {
     border: none;
     font-family: inherit;
     font-size: inherit;
@@ -45,39 +67,15 @@ body {
     border-radius: 20px;
 }
 
-.reRenderButton:hover {
+.map-infos>button:hover,
+.map-infos>label:hover {
     box-shadow: 0 4px lightblue;
     top: 2px;
 }
 
-.reRenderButton:active {
-    box-shadow: 0 0 lightblue;
-    top: 6px;
-}
-
-.reRenderButton::after,
-.reRenderButton::before {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-
-/*  2. header design
-*/
-
-.header {
-    grid-column: middle-start / middle-end;
-}
-
-
-/*  3. left-column design
-*/
-
-.map-infos {
-    display: flex;
-    flex-direction: column;
-    grid-column: left-start / left-end;
+.map-infos>button:active {
+    box-shadow: 0 0 lightblue !important;
+    top: 6px !important;
 }
 
 

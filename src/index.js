@@ -4,7 +4,7 @@ import './index.css';
 
 import Map from './components/Map'
 
-import { generate, expand, concatenateMap } from './generator'
+import { generate, expand } from './generator'
 
 class App extends Component {
     constructor(props) {
@@ -14,11 +14,16 @@ class App extends Component {
             map: generate(this.mapWidth, 'map'), // width={20} availableBiomes={['ocean', 'ocean', 'ocean', 'ocean', 'plains', 'plains', 'plains', 'swamp', 'magicforest']}
         }
         this.handleMapClick = this.handleMapClick.bind(this)
+        this.handleSaveClick = this.handleSaveClick.bind(this)
         this.handleReRenderClick = this.handleReRenderClick.bind(this)
     }
 
     handleMapClick() {
         this.setState({map: expand(this.state.map)})
+    }
+
+    handleSaveClick() {
+
     }
 
     handleReRenderClick() {
@@ -36,6 +41,7 @@ class App extends Component {
     render() {
         return (
             <div className='main-grid'>
+
                 <div className='header'>
                     <h1>Hello World !</h1>
                     <p>Here is the kfs prototype to map generation</p>
@@ -47,12 +53,14 @@ class App extends Component {
                 />
 
                 <div className='map-infos'>
-                    <label>
+                    <label className='map-dimensions-container'>
                         Dimension
                         <input id='map-dimensions' type="number" defaultValue={this.state.mapWidth}/*value={this.state.mapWidth} onChange={this.handleMapWidthChange}*/ />
                     </label>
+                    <button className='saveButton' onClick={this.handleSaveClick}>save</button>
                     <button className='reRenderButton' onClick={this.handleReRenderClick}>re-render</button>
                 </div>   
+
             </div>
         )
     }
