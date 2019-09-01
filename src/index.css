@@ -4,8 +4,9 @@
 /*
     1. main presentation design / organization
     2. header design
-    3. left-column design
-    4. map (middle-column) design
+    3. right-column design
+    4. left-column design
+    5. map (middle-column) design
 */
 
 
@@ -32,9 +33,121 @@ body {
 }
 
 
-/*  3. left-column design
+/*  3. right-column design
 */
 
+.map-biomes {
+    width: 100%;
+    height: 80vh;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px 0px rgba(0,0,0,.25);
+    grid-column: right-start / right-end;
+    grid-row: map-start;
+}
+
+.biome-selector {
+    margin-bottom: 5px;
+}
+
+.biome-selector .label-container {
+    width: 100%;
+    height: 7vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: lightpink;
+    justify-content: center;
+    align-items: center;
+}
+
+.biome-selector label {
+    display: block;
+}
+
+.biome-selector input {
+    display: block;
+    padding: 5px;
+    border: none;
+    border-radius: 2px;
+}
+
+
+/*  4. right-column design
+*/
+
+.map-infos {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-shadow: 0 4px 12px 0px rgba(0,0,0,.25);
+    grid-column: left-start / left-end;
+    grid-row: map-start;
+}
+
+.map-infos > .label-container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.map-infos label {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: lightgreen;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 2.5vh;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #fff;
+    transition: all 0.15s;
+}
+
+.map-infos > .button-container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.map-infos button {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: lightblue;
+    border: none;
+    font-family: inherit;
+    font-size: 2.5vh;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #fff;
+    transition: all 0.2s;
+}
+
+.map-infos > .button-container :hover {
+    filter: brightness(110%);
+}
+
+.map-infos > .label-container :hover {
+    filter: brightness(110%);
+}
+
+/*
 .map-infos {
     width: 100%;
     height: 100%;
@@ -77,9 +190,9 @@ body {
     box-shadow: 0 0 lightblue !important;
     top: 6px !important;
 }
+*/
 
-
-/*  4. map (middle-column) design
+/*  5. map (middle-column) design
 */
 
 .map-container {
