@@ -1,10 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&display=swap');
+/* font-family: 'Montserrat', sans-serif; */
+
+/*
+    1. main presentation design / organization
+    2. header design
+    3. left-column design
+    4. map (middle-column) design
+*/
+
+
+/*  1. main presentation design / organization
+*/
+
 body {
     margin: 0;
+    font-family: 'Montserrat', sans-serif;
 }
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr [right-start] 2fr [right-end] 1fr [middle-start] 80vh [middle-end] 1fr [left-start] 2fr [left-end] 1fr;
+    grid-template-rows: 17vh [map-start] 80vh [map-end] 3vh
+}
+
+.reRenderButton {
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: #fff;
+    background: #919191;
+    cursor: pointer;
+    padding: 25px 80px;
+    display: inline-block;
+    margin: 15px 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+    box-shadow: 0 6px lightblue;
+    border-radius: 20px;
+}
+
+.reRenderButton:hover {
+    box-shadow: 0 4px lightblue;
+    top: 2px;
+}
+
+.reRenderButton:active {
+    box-shadow: 0 0 lightblue;
+    top: 6px;
+}
+
+.reRenderButton::after,
+.reRenderButton::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+/*  2. header design
+*/
+
+.header {
+    grid-column: middle-start / middle-end;
+}
+
+
+/*  3. left-column design
+*/
+
+.map-infos {
+    display: flex;
+    flex-direction: column;
+    grid-column: left-start / left-end;
+}
+
+
+/*  4. map (middle-column) design
+*/
 
 .map-container {
     width: 80vh;
     height: 80vh;
+    box-shadow: 0 4px 12px 0px rgba(0,0,0,.25);
+    grid-column: middle-start / middle-end;
+    grid-row: map-start / map-end;
 }
 
 .map {
@@ -28,4 +113,8 @@ body {
 
 .swamp {
     background-color: green;
+}
+
+.magicforest {
+    background-color: pink;
 }

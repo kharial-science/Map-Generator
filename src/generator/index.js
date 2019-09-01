@@ -47,7 +47,7 @@ function expand(map) {
     return newMap
 }
 
-function generate (size = 100, type='chunkArray', availableBiomes = ['ocean', 'ocean', 'ocean', 'plains', 'plains', 'plains']) {
+function generate (size = 40, type='chunkArray', availableBiomes = ['ocean', 'ocean', 'ocean', 'plains', 'plains', 'plains']) {
 
     let row = new Array(size).fill(null);
     let map = new Array(size).fill(null).map(() => row.slice());

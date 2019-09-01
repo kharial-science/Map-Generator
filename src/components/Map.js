@@ -2,22 +2,15 @@ import React, { Component } from 'react'
 
 import Chunk from './Chunk'
 
-import { generate, concatenateMap, expand } from '../generator'
+import { concatenateMap } from '../generator'
 
 class Map extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            map: generate(this.props.width, 'map', this.props.availableBiomes),
-        }
-    }
-
-    handleClick() {
-        this.setState({map: expand(this.state.map)})
     }
 
     render() {
-        let chunkArray = concatenateMap(this.state.map)
+        let chunkArray = concatenateMap(this.props.map)
         let chunkKey = -1
         let chunkComponentsArray = chunkArray.map(chunk => {
             chunkKey++
@@ -25,13 +18,17 @@ class Map extends Component {
         })
         return (
             <div className='map-container'>
-                <div className='map' style={{
-                    gridTemplateColumns: `repeat(${Math.round(Math.sqrt(chunkArray.length))}, 1fr)`,
-                    gridTemplateRows: `repeat(${Math.round(Math.sqrt(chunkArray.length))}, 1fr)`,
-                }}
-                onClick={() => this.handleClick()}
+                <div 
+                    className='map' 
+                    style={{
+                        gridTemplateColumns: `repeat(${Math.round(Math.sqrt(chunkArray.length))}, 1fr)`,
+                        gridTemplateRows: `repeat(${Math.round(Math.sqrt(chunkArray.length))}, 1fr)`,
+                    }}
+                    onClick={() => this.props.onClick()}
                 >
+
                     {chunkComponentsArray}
+
                 </div>
             </div>
         )
