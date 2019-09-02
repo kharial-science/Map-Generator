@@ -75,14 +75,16 @@ function fix(map) {
                 let directBiomes = []
                 directChunksRelative.forEach(coords => {
                     try {
-                        if(map[x + coords[0]][y + coords[1]]) {
+                        if(map[x + coords[0]][y + coords[1]].biome) {
                             directBiomes.push(map[x + coords[0]][y + coords[1]].biome)
-                        } 
+                        }
                     } catch (e) {}  
                 })
-                newMap[x][y] = {
-                    biome: directBiomes[Math.floor(Math.random()*directBiomes.length)],
-                    status: 'done'
+                if (directBiomes[0]) {
+                    newMap[x][y] = {
+                        biome: directBiomes[Math.floor(Math.random()*directBiomes.length)],
+                        status: 'done'
+                    }
                 }
             }
             y++
