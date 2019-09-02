@@ -33,7 +33,7 @@ body {
 }
 
 
-/*  3. right-column design
+/*  3. left-column design
 */
 
 .map-biomes {
@@ -48,25 +48,37 @@ body {
 }
 
 .biome-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     margin-bottom: 5px;
 }
 
 .biome-selector .label-container {
     width: 100%;
-    height: 7vh;
+    min-height: 7vh;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     background-color: lightpink;
     justify-content: center;
-    align-items: center;
 }
 
 .biome-selector label {
-    display: block;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    font-family: inherit;
+    font-size: 2.5vh;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #fff;
 }
 
 .biome-selector input {
+    width: 50%;
     display: block;
     padding: 5px;
     border: none;
@@ -115,6 +127,7 @@ body {
     transition: all 0.15s;
 }
 
+.map-biomes > .button-container,
 .map-infos > .button-container {
     margin: 0;
     padding: 0;
@@ -122,6 +135,7 @@ body {
     height: 100%;
 }
 
+.map-biomes button,
 .map-infos button {
     margin: 0;
     padding: 0;
@@ -139,6 +153,7 @@ body {
     transition: all 0.2s;
 }
 
+.map-biomes > .button-container :hover,
 .map-infos > .button-container :hover {
     filter: brightness(110%);
 }

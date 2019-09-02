@@ -5,7 +5,7 @@ import './index.css';
 import Map from './components/Map'
 import BiomeSelector from './components/BiomeSelector'
 
-import { generate, expand } from './generator'
+import { generate, expand, fix } from './generator'
 import download from './lib/download.js'
 import createAvailableBiomesArray from './lib/createAvailableBiomesArray.js'
 
@@ -23,6 +23,7 @@ class App extends Component {
         this.handleSaveClick = this.handleSaveClick.bind(this)
         this.handleReRenderClick = this.handleReRenderClick.bind(this)
         this.handleAddBiomeClick = this.handleAddBiomeClick.bind(this)
+        this.handleFixMapClick = this.handleFixMapClick.bind(this)
     }
 
     handleAddBiomeClick() {
@@ -33,6 +34,10 @@ class App extends Component {
 
     handleMapClick() {
         this.setState({map: expand(this.state.map)})
+    }
+
+    handleFixMapClick() {
+        this.setState({map: fix(this.state.map)})
     }
 
     handleSaveClick() {
@@ -86,18 +91,22 @@ class App extends Component {
 
                 <div className='map-infos'>
 
-                    <div className='map-dimensions-container label-container'>
+                    <div className='label-container'>
                         <label className='map-dimensions-label'>
                             Dimension
                             <input id='map-dimensions' type="number" defaultValue={this.state.mapWidth}/*value={this.state.mapWidth} onChange={this.handleMapWidthChange}*/ />
                         </label>
                     </div>
                     
-                    <div className='save-button-container button-container'>
+                    <div className='button-container'>
+                        <button className='fixMapButton' onClick={this.handleFixMapClick}>fix map</button>
+                    </div>
+
+                    <div className='button-container'>
                         <button className='saveButton' onClick={this.handleSaveClick}>save</button>
                     </div>
 
-                    <div className='re-render-button-container button-container'>
+                    <div className='button-container'>
                         <button className='reRenderButton' onClick={this.handleReRenderClick}>re-render</button>
                     </div>
                     
@@ -105,7 +114,10 @@ class App extends Component {
 
                 <div className='map-biomes'>
                     {biomeComponentArray}
-                    <button onClick={this.handleAddBiomeClick}>Ajouter un biome</button>
+                    <div className='button-container'>
+                        <button onClick={this.handleAddBiomeClick}>Ajouter un biome</button>
+                    </div>
+                    
 
                 </div>
 

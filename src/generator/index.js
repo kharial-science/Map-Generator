@@ -64,6 +64,35 @@ function generate (size = 40, type='chunkArray', availableBiomes = ['ocean', 'oc
     return concatenateMap(map);
 }
 
+function fix(map) {
+    let newMap = _.cloneDeep(map)
+    let x = 0
+    for (let row of map) {
+        let y = 0
+        for (let chunk of row) {
+            if(!chunk) {
+                let directChunksRelative = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+                let directBiomes = []
+                directChunksRelative.forEach(coords => {
+                    try {
+                        if(map[x + coords[0]][y + coords[1]]) {
+                            directBiomes.push(map[x + coords[0]][y + coords[1]].biome)
+                        } 
+                    } catch (e) {}  
+                })
+                newMap[x][y] = {
+                    biome: directBiomes[Math.floor(Math.random()*directBiomes.length)],
+                    status: 'done'
+                }
+            }
+            y++
+        }
+        x++
+    }
+
+    return newMap
+}
+
 function isNullChunkInMap(map) {
     for (let row of map) {
         for(let chunk of row) {
@@ -88,5 +117,5 @@ function concatenateMap(nestedArrays) {
 }
 
 //const chunkArray = ['ocean', 'ocean', 'plains', 'plains']
-export { concatenateMap, generate, expand }
+export { concatenateMap, generate, expand, fix }
 
