@@ -12,22 +12,13 @@ import createAvailableBiomesArray from './lib/createAvailableBiomesArray.js'
 class App extends Component {
     constructor(props) {
         super(props)
+
         this.state = {
             mapWidth: 40,
-            map: generate(this.mapWidth, 'map'), // width={20} availableBiomes={['ocean', 'ocean', 'ocean', 'ocean', 'plains', 'plains', 'plains', 'swamp', 'magicforest']}
-            biomes: [
-                {
-                    name: 'ocean',
-                    color: 'lightblue',
-                    number: 3,
-                },
-                {
-                    name: 'plains',
-                    color: 'lightgreen',
-                    number: 2
-                }
-            ]
+            map: generate(this.mapWidth, 'map'),
+            biomes: [{name: 'ocean', color: 'lightblue', number: 3}, {name: 'plains', color: 'lightgreen', number: 2}]
         }
+
         this.handleMapClick = this.handleMapClick.bind(this)
         this.handleSaveClick = this.handleSaveClick.bind(this)
         this.handleReRenderClick = this.handleReRenderClick.bind(this)
@@ -36,7 +27,7 @@ class App extends Component {
 
     handleAddBiomeClick() {
         let newBiomeList = [...this.state.biomes]
-        newBiomeList.push({name: 'nom', color:'couleur', number:0, })
+        newBiomeList.push({name: 'nom', color: 'couleur', number: 0})
         this.setState({biomes: newBiomeList})
     }
 
@@ -89,6 +80,7 @@ class App extends Component {
 
                 <Map 
                     map={this.state.map}
+                    biomes={this.state.biomes}
                     onClick={() => this.handleMapClick()}
                 />
 

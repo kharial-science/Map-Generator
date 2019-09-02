@@ -9,7 +9,7 @@ function Map(props) {
     let chunkKey = -1
     let chunkComponentsArray = chunkArray.map(chunk => {
         chunkKey++
-        return <Chunk key={chunkKey} biome={chunk ? chunk.biome : null} status={chunk ? chunk.status : null} />
+        return <Chunk key={chunkKey} biome={chunk ? chunk.biome : null} color={chunk ? props.biomes.find(biome => biome.name === chunk.biome).color : null} status={chunk ? chunk.status : null} />
     })
     return (
         <div className='map-container'>
