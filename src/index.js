@@ -16,7 +16,7 @@ class App extends Component {
         this.state = {
             mapWidth: 40,
             map: generate(this.mapWidth, 'map'),
-            biomes: [{name: 'ocean', color: 'lightblue', number: 3}, {name: 'plains', color: 'lightgreen', number: 2}]
+            biomes: [{name: 'ocean', color: '#add8e6', number: 3}, {name: 'plains', color: '#90ee90', number: 2}]
         }
 
         this.handleMapClick = this.handleMapClick.bind(this)

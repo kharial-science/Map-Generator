@@ -19,7 +19,7 @@ class BiomeSelector extends Component {
                 <div className='label-container'>
                     <label>
                         Couleur du biome
-                        <input className='biome-color-input' type='text' defaultValue={this.props.color}></input>
+                        <input className='biome-color-input' type='color' defaultValue={this.props.color}></input>
                     </label>
                 </div>
                 
