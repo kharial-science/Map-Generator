@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
 
 import Map from './components/Map'
 import BiomeSelector from './components/BiomeSelector'
@@ -10,126 +10,120 @@ import download from './lib/download.js'
 import createAvailableBiomesArray from './lib/createAvailableBiomesArray.js'
 
 class App extends Component {
-    constructor(props) {
-        super(props)
+  constructor (props) {
+    super(props)
 
-        this.state = {
-            mapWidth: 40,
-            map: generate(this.mapWidth, 'map'),
-            biomes: [{name: 'ocean', color: '#add8e6', number: 3}, {name: 'plains', color: '#90ee90', number: 2}]
-        }
-
-        this.handleMapClick = this.handleMapClick.bind(this)
-        this.handleSaveClick = this.handleSaveClick.bind(this)
-        this.handleReRenderClick = this.handleReRenderClick.bind(this)
-        this.handleAddBiomeClick = this.handleAddBiomeClick.bind(this)
-        this.handleFixMapClick = this.handleFixMapClick.bind(this)
+    this.state = {
+      mapWidth: 40,
+      map: generate(this.mapWidth, 'map'),
+      biomes: [{ name: 'ocean', color: '#add8e6', number: 3 }, { name: 'plains', color: '#90ee90', number: 2 }]
     }
 
-    handleAddBiomeClick() {
-        let newBiomeList = [...this.state.biomes]
-        newBiomeList.push({name: 'nom', color: 'couleur', number: 0})
-        this.setState({biomes: newBiomeList})
-    }
+    this.handleMapClick = this.handleMapClick.bind(this)
+    this.handleSaveClick = this.handleSaveClick.bind(this)
+    this.handleReRenderClick = this.handleReRenderClick.bind(this)
+    this.handleAddBiomeClick = this.handleAddBiomeClick.bind(this)
+    this.handleFixMapClick = this.handleFixMapClick.bind(this)
+  }
 
-    handleMapClick() {
-        this.setState({map: expand(this.state.map)})
-    }
+  handleAddBiomeClick () {
+    const newBiomeList = [...this.state.biomes]
+    newBiomeList.push({ name: 'nom', color: 'couleur', number: 0 })
+    this.setState({ biomes: newBiomeList })
+  }
 
-    handleFixMapClick() {
-        this.setState({map: fix(this.state.map)})
-    }
+  handleMapClick () {
+    this.setState({ map: expand(this.state.map) })
+  }
 
-    handleSaveClick() {
-        download(`Map (${this.state.mapWidth})`, this.state.map, document)
-    }
+  handleFixMapClick () {
+    this.setState({ map: fix(this.state.map) })
+  }
 
-    handleReRenderClick() {
+  handleSaveClick () {
+    download(`Map (${this.state.mapWidth})`, this.state.map, document)
+  }
 
-        let newBiomeList = []
-        Array.from(document.getElementsByClassName('biome-selector')).forEach(biomeSelector => {
-            newBiomeList.push({
-                name: biomeSelector.getElementsByClassName('biome-name-input')[0].value,
-                color: biomeSelector.getElementsByClassName('biome-color-input')[0].value,
-                number: biomeSelector.getElementsByClassName('biome-number-input')[0].value,
-            })
-        })
+  handleReRenderClick () {
+    const newBiomeList = []
+    Array.from(document.getElementsByClassName('biome-selector')).forEach(biomeSelector => {
+      newBiomeList.push({
+        name: biomeSelector.getElementsByClassName('biome-name-input')[0].value,
+        color: biomeSelector.getElementsByClassName('biome-color-input')[0].value,
+        number: biomeSelector.getElementsByClassName('biome-number-input')[0].value
+      })
+    })
 
-        this.setState({
-            mapWidth: parseInt(document.getElementById('map-dimensions').value, 10),
-            biomes: newBiomeList,
-        }, 
-        () => {
-            console.log()
-            this.setState({
-                map: generate(this.state.mapWidth, 'map', createAvailableBiomesArray(this.state.biomes))
-            })
-        })
-    }
+    this.setState({
+      mapWidth: parseInt(document.getElementById('map-dimensions').value, 10),
+      biomes: newBiomeList
+    },
+    () => {
+      console.log()
+      this.setState({
+        map: generate(this.state.mapWidth, 'map', createAvailableBiomesArray(this.state.biomes))
+      })
+    })
+  }
 
-    render() {
+  render () {
+    let biomeKey = -1
+    const biomeComponentArray = Array.from(this.state.biomes).map(biome => {
+      biomeKey++
+      return <BiomeSelector key={biomeKey} name={biome.name} color={biome.color} number={biome.number} />
+    })
 
-        let biomeKey = -1
-        let biomeComponentArray = Array.from(this.state.biomes).map(biome => {
-            biomeKey++
-            return <BiomeSelector key={biomeKey} name={biome.name} color={biome.color} number={biome.number} />
-        })
+    return (
+      <div className='main-grid'>
 
-        return (
-            <div className='main-grid'>
+        <div className='header'>
+          <h1>Kharoh Family</h1>
+          <p>Here is the kfs prototype to map generation</p>
+        </div>
 
-                <div className='header'>
-                    <h1>Hello World !</h1>
-                    <p>Here is the kfs prototype to map generation</p>
-                </div>
+        <Map
+          map={this.state.map}
+          biomes={this.state.biomes}
+          onClick={() => this.handleMapClick()}
+        />
 
-                <Map 
-                    map={this.state.map}
-                    biomes={this.state.biomes}
-                    onClick={() => this.handleMapClick()}
-                />
+        <div className='map-infos'>
 
-                <div className='map-infos'>
-
-                    <div className='label-container'>
-                        <label className='map-dimensions-label'>
+          <div className='label-container'>
+            <label className='map-dimensions-label'>
                             Dimension
-                            <input id='map-dimensions' type="number" defaultValue={this.state.mapWidth}/*value={this.state.mapWidth} onChange={this.handleMapWidthChange}*/ />
-                        </label>
-                    </div>
-                    
-                    <div className='button-container'>
-                        <button className='fixMapButton' onClick={this.handleFixMapClick}>fix map</button>
-                    </div>
+              <input id='map-dimensions' type='number' defaultValue={this.state.mapWidth}/* value={this.state.mapWidth} onChange={this.handleMapWidthChange} */ />
+            </label>
+          </div>
 
-                    <div className='button-container'>
-                        <button className='saveButton' onClick={this.handleSaveClick}>save</button>
-                    </div>
+          <div className='button-container'>
+            <button className='fixMapButton' onClick={this.handleFixMapClick}>fix map</button>
+          </div>
 
-                    <div className='button-container'>
-                        <button className='reRenderButton' onClick={this.handleReRenderClick}>re-render</button>
-                    </div>
-                    
-                </div>
+          <div className='button-container'>
+            <button className='saveButton' onClick={this.handleSaveClick}>save</button>
+          </div>
 
-                <div className='map-biomes'>
-                    {biomeComponentArray}
-                    <div className='button-container'>
-                        <button onClick={this.handleAddBiomeClick}>Ajouter un biome</button>
-                    </div>
-                    
+          <div className='button-container'>
+            <button className='reRenderButton' onClick={this.handleReRenderClick}>re-render</button>
+          </div>
 
-                </div>
+        </div>
 
-            </div>
-        )
-    }
+        <div className='map-biomes'>
+          {biomeComponentArray}
+          <div className='button-container'>
+            <button onClick={this.handleAddBiomeClick}>Ajouter un biome</button>
+          </div>
+
+        </div>
+
+      </div>
+    )
+  }
 }
 
-
-
-
 ReactDOM.render(
-    <App />,
-    document.getElementById('root')
-);
+  <App />,
+  document.getElementById('root')
+)

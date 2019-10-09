@@ -1,38 +1,38 @@
 import React, { Component } from 'react'
 
 class BiomeSelector extends Component {
-    constructor(props) {
-        super(props)
-    }
+  constructor (props) {
+    super(props)
+  }
 
-    render() {
-        return (
-            <div className='biome-selector'>
+  render () {
+    return (
+      <div className='biome-selector'>
 
-                <div className='label-container'>
-                    <label>
+        <div className='label-container'>
+          <label>
                         Nom du biome
-                        <input className='biome-name-input' type='text' defaultValue={this.props.name}></input>
-                    </label>
-                </div>
-                
-                <div className='label-container'>
-                    <label>
+            <input className='biome-name-input' type='text' defaultValue={this.props.name} />
+          </label>
+        </div>
+
+        <div className='label-container'>
+          <label>
                         Couleur du biome
-                        <input className='biome-color-input' type='color' defaultValue={this.props.color}></input>
-                    </label>
-                </div>
-                
-                <div className='label-container'>
-                    <label>
+            <input className='biome-color-input' type='color' defaultValue={this.props.color} />
+          </label>
+        </div>
+
+        <div className='label-container'>
+          <label>
                         Nombre
-                        <input className='biome-number-input' type='number' defaultValue={this.props.number}></input>
-                    </label>
-                </div>
-                
-            </div>
-        )
-    }
+            <input className='biome-number-input' type='number' defaultValue={this.props.number} />
+          </label>
+        </div>
+
+      </div>
+    )
+  }
 }
 
 export default BiomeSelector
