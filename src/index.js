@@ -77,8 +77,8 @@ class App extends Component {
       <div className='main-grid'>
 
         <div className='header'>
-          <h1>Kharoh Family</h1>
-          <p>Here is the kfs prototype to map generation</p>
+          <h1>Map Generator</h1>
+          <p>Kharoh Family Science Map Generator prototype, later usage in generating Kharoh Families' maps</p>
         </div>
 
         <Map
