@@ -83,6 +83,7 @@ body {
     padding: 5px;
     border: none;
     border-radius: 2px;
+    font-family: inherit;
 }
 
 
@@ -162,50 +163,14 @@ body {
     filter: brightness(110%);
 }
 
-/*
-.map-infos {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    grid-column: left-start / left-end;
-    grid-row: map-start;
-}
-
-.map-infos>button,
-.map-infos>label {
+.map-infos input {
+    width: 50%;
+    display: block;
+    padding: 5px;
     border: none;
+    border-radius: 2px;
     font-family: inherit;
-    font-size: inherit;
-    color: #fff;
-    background: #919191;
-    cursor: pointer;
-    padding: 25px 80px;
-    display: inline-block;
-    margin: 15px 30px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 700;
-    outline: none;
-    position: relative;
-    -webkit-transition: none;
-    -moz-transition: none;
-    transition: none;
-    box-shadow: 0 6px lightblue;
-    border-radius: 20px;
 }
-
-.map-infos>button:hover,
-.map-infos>label:hover {
-    box-shadow: 0 4px lightblue;
-    top: 2px;
-}
-
-.map-infos>button:active {
-    box-shadow: 0 0 lightblue !important;
-    top: 6px !important;
-}
-*/
 
 /*  5. map (middle-column) design
 */
@@ -229,19 +194,15 @@ body {
     height: 100%;
 }
 
-/* 
-.ocean {
-    background-color: lightblue;
+.expanding {
+    animation: openScaleUp ease-in-out .3s forwards;
 }
 
-.plains {
-    background-color: lightgreen;
+@keyframes openScaleUp {
+    0% {
+        transform: scale(0)
+    }
+    100% {
+        transform: scale(1)
+    }
 }
-
-.swamp {
-    background-color: green;
-}
-
-.magicforest {
-    background-color: pink;
-} */
