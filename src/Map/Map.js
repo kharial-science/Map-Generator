@@ -2,7 +2,7 @@ import React from 'react'
 
 import Chunk from './Chunk'
 
-import { concatenateMap } from '../generator'
+import { concatenateMap } from '../lib/generator'
 
 function Map (props) {
   const chunkArray = concatenateMap(props.map)
@@ -11,6 +11,7 @@ function Map (props) {
     chunkKey++
     return <Chunk key={chunkKey} biome={chunk ? chunk.biome : null} color={chunk ? props.biomes.find(biome => biome.name === chunk.biome).color : null} status={chunk ? chunk.status : null} />
   })
+
   return (
     <div className='map-container'>
       <div
