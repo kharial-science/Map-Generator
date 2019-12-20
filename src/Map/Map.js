@@ -4,6 +4,8 @@ import Chunk from './Chunk'
 
 import { concatenateMap } from '../lib/generator'
 
+import './Map.css'
+
 function Map (props) {
   const chunkArray = concatenateMap(props.map)
   let chunkKey = -1
@@ -13,19 +15,17 @@ function Map (props) {
   })
 
   return (
-    <div className='map-container'>
-      <div
-        className='map'
-        style={{
-          gridTemplateColumns: `repeat(${Math.round(Math.sqrt(chunkArray.length))}, 1fr)`,
-          gridTemplateRows: `repeat(${Math.round(Math.sqrt(chunkArray.length))}, 1fr)`
-        }}
-        onClick={() => props.onClick()}
-      >
+    <div
+      id='Map'
+      style={{
+        gridTemplateColumns: `repeat(${Math.round(Math.sqrt(chunkArray.length))}, 1fr)`,
+        gridTemplateRows: `repeat(${Math.round(Math.sqrt(chunkArray.length))}, 1fr)`
+      }}
+      onClick={() => props.onClick()}
+    >
 
-        {chunkComponentsArray}
+      {chunkComponentsArray}
 
-      </div>
     </div>
   )
 }

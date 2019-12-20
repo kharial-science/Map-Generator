@@ -3,7 +3,7 @@ import React from 'react'
 function Chunk (props) {
   return (
     <div
-      className={`chunk ${props.biome} ${props.status}`}
+      className={`Chunk ${props.biome} ${props.status}`}
       style={props.color ? {
         backgroundColor: props.color
       } : undefined}

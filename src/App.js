@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 import './App.css'
 
 import Map from './Map/Map'
-import BiomeSelector from './Biome/BiomeSelector'
+import Biomes from './Biome/Biomes'
+import InfoButtons from './InfoButtons/InfoButtons'
 
 import { generate, expand, fix } from './lib/generator'
 import download from './lib/download'
@@ -59,7 +60,6 @@ class App extends Component {
       biomes: newBiomeList
     },
     () => {
-      console.log()
       this.setState({
         map: generate(this.state.mapWidth, 'map', createAvailableBiomesArray(this.state.biomes))
       })
@@ -67,56 +67,35 @@ class App extends Component {
   }
 
   render () {
-    let biomeKey = -1
-    const biomeComponentArray = Array.from(this.state.biomes).map(biome => {
-      biomeKey++
-      return <BiomeSelector key={biomeKey} name={biome.name} color={biome.color} number={biome.number} />
-    })
-
     return (
-      <div className='main-grid'>
+      <div id='App'>
 
+        {/* Header */}
         <div className='header'>
           <h1>Map Generator</h1>
           <p>Kharoh Family Science Map Generator prototype, later usage in generating Kharoh Families' maps</p>
         </div>
 
+        {/* map */}
         <Map
           map={this.state.map}
           biomes={this.state.biomes}
           onClick={() => this.handleMapClick()}
         />
 
-        <div className='map-infos'>
+        {/* buttons */}
+        <InfoButtons
+          mapWidth={this.state.mapWidth}
+          handleFixMapClick={this.handleFixMapClick}
+          handleReRenderClick={this.handleReRenderClick}
+          handleSaveClick={this.handleSaveClick}
+        />
 
-          <div className='label-container'>
-            <label className='map-dimensions-label'>
-                              Dimension
-              <input id='map-dimensions' type='number' defaultValue={this.state.mapWidth}/* value={this.state.mapWidth} onChange={this.handleMapWidthChange} */ />
-            </label>
-          </div>
-
-          <div className='button-container'>
-            <button className='fixMapButton' onClick={this.handleFixMapClick}>fix map</button>
-          </div>
-
-          <div className='button-container'>
-            <button className='saveButton' onClick={this.handleSaveClick}>save</button>
-          </div>
-
-          <div className='button-container'>
-            <button className='reRenderButton' onClick={this.handleReRenderClick}>re-render</button>
-          </div>
-
-        </div>
-
-        <div className='map-biomes'>
-          {biomeComponentArray}
-          <div className='button-container'>
-            <button onClick={this.handleAddBiomeClick}>Ajouter un biome</button>
-          </div>
-
-        </div>
+        {/* biomes */}
+        <Biomes
+          handleAddBiomeClick={this.handleAddBiomeClick}
+          biomes={this.state.biomes}
+        />
 
       </div>
     )
