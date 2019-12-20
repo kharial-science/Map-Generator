@@ -10,11 +10,6 @@ class Presentation extends Component {
     render() {
         return (
             <div id="Presentation">
-
-                <div className="cross-header">
-                    
-                </div>
-
                 <header>
                     <h1>Map Generator</h1>
                     <p>Kharoh Family Science Map Generator prototype, later usage in generating Kharoh Families' maps</p>
