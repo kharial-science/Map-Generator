@@ -4,6 +4,8 @@ import './App.css'
 
 import Main from './Main/Main'
 import Presentation from './Presentation/Presentation'
+import Lab from './Lab/Lab'
+import Footer from './Footer/Footer'
 
 import { generate, expand, fix, concatenateMap } from './lib/generator'
 import download from './lib/download'
@@ -87,6 +89,10 @@ class App extends Component {
         />
 
         <Presentation />
+
+        <Lab />
+
+        <Footer />
       </div>
     )
   }

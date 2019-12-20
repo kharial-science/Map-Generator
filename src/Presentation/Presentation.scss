@@ -1,25 +1,33 @@
 #Presentation {
 
     background-color: white;
-    height: 100vh;
+    height: 650px;
 
-    header {
+    .header-container {
 
-        padding: 2vw;
-        width: 56vw;
-        margin: auto;
+        height: 280px;
 
-        position: sticky;
-        top: 10vh;
-        border-radius: 2vw;
-        background-color: white;
-        box-shadow: 0 4px 12px 0px rgba(0,0,0,.25);
-        transform: translateY(-5vh);
+        header {
 
-        h1 {
-            margin: 0;
+            padding: 2vw;
+            width: 56vw;
+            margin: auto;
+    
+            position: sticky;
+            top: 17vh;
+            border-radius: 2vw;
+            background-color: white;
+            box-shadow: 0 4px 12px 0px rgba(0,0,0,.25);
+            transform: translateY(-5vh);
+    
+            h1 {
+                margin: 0;
+            }
+            
         }
-        
+
     }
+
+    
 
 }
