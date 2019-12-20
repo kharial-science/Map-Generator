@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import './App.css'
 
 import Main from './Main/Main'
+import Presentation from './Presentation/Presentation'
 
 import { generate, expand, fix, concatenateMap } from './lib/generator'
 import download from './lib/download'
@@ -85,11 +86,7 @@ class App extends Component {
           biomes={this.state.biomes}
         />
 
-        {/* Header */}
-        <div className='header'>
-          <h1>Map Generator</h1>
-          <p>Kharoh Family Science Map Generator prototype, later usage in generating Kharoh Families' maps</p>
-        </div>
+        <Presentation />
       </div>
     )
   }

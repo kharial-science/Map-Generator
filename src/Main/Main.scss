@@ -1,6 +1,6 @@
 #Main {
     display: grid;
     grid-template-columns: 1fr [right-start] 2fr [right-end] 1fr [middle-start] 80vh [middle-end] 1fr [left-start] 2fr [left-end] 1fr;
-    grid-template-rows: 10vh [map-start] 80vh [map-end] 10vh;
+    grid-template-rows: 10vh [map-start] 80vh [map-end] 30vh;
     background-color: rgba(46, 46, 46, 0.9);
 }
