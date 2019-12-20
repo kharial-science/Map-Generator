@@ -20,7 +20,7 @@ class Biomes extends Component {
       <div id='Biomes'>
         {biomeComponentArray}
         <div className='button-container'>
-          <button onClick={this.props.handleAddBiomeClick}>Ajouter un biome</button>
+          <button onClick={this.props.handleAddBiomeClick}>Add a biome</button>
         </div>
       </div>
     )
