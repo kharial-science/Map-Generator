@@ -2,12 +2,10 @@ import React from 'react'
 
 import Chunk from './Chunk'
 
-import { concatenateMap } from '../lib/generator'
-
 import './Map.css'
 
 function Map (props) {
-  const chunkArray = concatenateMap(props.map)
+  const chunkArray = props.concatenateMap(props.map)
   let chunkKey = -1
   const chunkComponentsArray = chunkArray.map(chunk => {
     chunkKey++
@@ -21,7 +19,7 @@ function Map (props) {
         gridTemplateColumns: `repeat(${Math.round(Math.sqrt(chunkArray.length))}, 1fr)`,
         gridTemplateRows: `repeat(${Math.round(Math.sqrt(chunkArray.length))}, 1fr)`
       }}
-      onClick={() => props.onClick()}
+      onClick={() => props.handleMapClick()}
     >
 
       {chunkComponentsArray}

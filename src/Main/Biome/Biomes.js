@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import BiomeSelector from './BiomeSelector'
 
-import Biome from './Biome.css'
+import './Biome.css'
 
 class Biomes extends Component {
   constructor (props) {

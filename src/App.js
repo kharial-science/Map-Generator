@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 
 import './App.css'
 
-import Map from './Map/Map'
-import Biomes from './Biome/Biomes'
-import InfoButtons from './InfoButtons/InfoButtons'
+import Main from './Main/Main'
 
-import { generate, expand, fix } from './lib/generator'
+import { generate, expand, fix, concatenateMap } from './lib/generator'
 import download from './lib/download'
 import createAvailableBiomesArray from './lib/createAvailableBiomesArray.js'
 
@@ -69,34 +67,29 @@ class App extends Component {
   render () {
     return (
       <div id='App'>
+        <Main
+          // props for Map
+          map={this.state.map}
+          biomes={this.state.biomes}
+          handleMapClick={() => this.handleMapClick()}
+          concatenateMap={concatenateMap}
+
+          // props for InfoButtons
+          mapWidth={this.state.mapWidth}
+          handleFixMapClick={this.handleFixMapClick}
+          handleReRenderClick={this.handleReRenderClick}
+          handleSaveClick={this.handleSaveClick}
+
+          // props for Biomes
+          handleAddBiomeClick={this.handleAddBiomeClick}
+          biomes={this.state.biomes}
+        />
 
         {/* Header */}
         <div className='header'>
           <h1>Map Generator</h1>
           <p>Kharoh Family Science Map Generator prototype, later usage in generating Kharoh Families' maps</p>
         </div>
-
-        {/* map */}
-        <Map
-          map={this.state.map}
-          biomes={this.state.biomes}
-          onClick={() => this.handleMapClick()}
-        />
-
-        {/* buttons */}
-        <InfoButtons
-          mapWidth={this.state.mapWidth}
-          handleFixMapClick={this.handleFixMapClick}
-          handleReRenderClick={this.handleReRenderClick}
-          handleSaveClick={this.handleSaveClick}
-        />
-
-        {/* biomes */}
-        <Biomes
-          handleAddBiomeClick={this.handleAddBiomeClick}
-          biomes={this.state.biomes}
-        />
-
       </div>
     )
   }

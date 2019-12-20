@@ -7,9 +7,8 @@ body {
 }
 
 #App {
-    display: grid;
-    grid-template-columns: 1fr [right-start] 2fr [right-end] 1fr [middle-start] 80vh [middle-end] 1fr [left-start] 2fr [left-end] 1fr;
-    grid-template-rows: 17vh [map-start] 80vh [map-end] 3vh
+    background-image: url('./assets/Main_background.jpg');
+    background-size: cover;
 }
 
 .header {
