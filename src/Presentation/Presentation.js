@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import Explanation from './Explanation'
+
 import './Presentation.css'
 
 class Presentation extends Component {
@@ -41,6 +43,11 @@ class Presentation extends Component {
           </header>
         </div>
 
+        <div id="explanation-container">
+          <Explanation number={0} />
+          <Explanation number={1} />
+          <Explanation number={2} />
+        </div>
       </div>
     )
   }

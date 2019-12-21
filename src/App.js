@@ -5,6 +5,7 @@ import './App.css'
 import Main from './Main/Main'
 import Presentation from './Presentation/Presentation'
 import Lab from './Lab/Lab'
+import Map from './Main/Map/Map'
 import Footer from './Footer/Footer'
 
 import { generate, expand, fix, concatenateMap } from './lib/generator'
@@ -90,7 +91,14 @@ class App extends Component {
 
         <Presentation />
 
-        <Lab />
+        <Lab>
+          {/* <Map 
+            map={this.state.map}
+            biomes={this.state.biomes}
+            handleMapClick={() => this.handleMapClick()}
+            concatenateMap={concatenateMap}
+          /> */}
+        </Lab>
 
         <Footer />
       </div>

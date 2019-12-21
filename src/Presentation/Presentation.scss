@@ -28,6 +28,82 @@
 
     }
 
+    #explanation-container {
+
+        height: 45%;
+        // background-color: grey;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+
+        .Explanation {
+            width: 20vw;
+
+            // background-color: grey;
+
+            display: grid;
+            grid-template-columns: [text-start] 1fr [number-pos] 1fr [image-start] 1fr 1fr;
+            grid-template-rows: 60px;
+
+            .number {
+                grid-column: number-pos / span 1;
+                font-size: 30px;
+                line-height: 0;
+            }
+
+            .title {
+                grid-column: span 2;
+                font-size: 30px;
+                line-height: 0;
+            }
+
+            p {
+                grid-column: text-start / span 2;
+                font-size: 20px;
+                text-align: right;
+            }
+
+            .image {
+                margin: 20px auto;
+                grid-column: span 2;
+                width: 9vw;
+                height: 9vw;
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                border: dashed 1px rgba(0, 0, 0, 0.1);
+
+                &.sow {
+                    border-radius: 1vw;
+                }
+
+                &.fix {
+                    border: none;
+                }
+
+                .expanding {
+                    transform: scale(0);
+                }
+
+                .fixing {
+                    visibility: hidden;
+                }
+
+                .plains {
+                    background-color: lightgreen;
+                }
+
+                .ocean {
+                    background-color: lightblue;
+                }
+
+            }
+
+
+        }
+
+    }
+
     
 
 }

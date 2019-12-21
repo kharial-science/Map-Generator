@@ -9,7 +9,9 @@ class Lab extends Component {
 
   render () {
     return (
-      <div id='Lab' />
+      <div id='Lab'>
+        {this.props.children}
+      </div>
     )
   }
 }
