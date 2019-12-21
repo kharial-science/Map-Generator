@@ -9,6 +9,43 @@ class Presentation extends Component {
     super(props)
   }
 
+  componentDidMount() {
+    const observer = new IntersectionObserver((entries, observer) => {
+
+      if (entries[0].isIntersecting) {
+
+        let animationDelay = 0.5
+
+        const sowingChunks = Array.from(document.getElementsByClassName("sowin"))
+        sowingChunks.forEach(chunkElement => {
+          chunkElement.style.animation = `sowing 0.6s ${animationDelay}s forwards`
+          animationDelay += 0.4
+        })
+
+        animationDelay += 1
+
+        const expandingChunks = Array.from(document.getElementsByClassName("expandin"))
+        expandingChunks.forEach(chunkElement => {
+          chunkElement.style.animation = `expanding 0.6s ${animationDelay}s forwards`
+          animationDelay += 0.25
+        })
+
+        animationDelay += 1
+
+        const fixingChunks = Array.from(document.getElementsByClassName("fixin"))
+        fixingChunks.forEach(chunkElement => {
+          chunkElement.style.animation = `fixing 1s ${animationDelay}s forwards`
+          animationDelay += 0.5
+        })
+
+        observer.unobserve(document.querySelector("#explanation-container"))
+      }
+
+    }, { threshold: 1 })
+
+    observer.observe(document.querySelector("#explanation-container"))
+  }
+
   render () {
 
     // let title = "Map Generator"

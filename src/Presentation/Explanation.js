@@ -5,22 +5,14 @@ class Explanation extends Component {
         super(props)
     }
 
-    componentDidMount() {
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => entry.isIntersecting ? entry.target.classList.add('visible') : 0 )
-        }, { rootMargin: "-300px" })
-
-        observer.observe(document.querySelector("#explanation-container"))
-    }
-
     render() {
 
         let sowingChunks = [
-            "", "plains sowing", "", "", "",
+            "", "plains sowin", "", "", "",
             "", "", "", "", "",
-            "ocean sowing", "", "", "", "",
+            "ocean sowin", "", "", "", "",
             "", "", "", "", "",
-            "", "", "plains sowing", "", ""
+            "", "", "plains sowin", "", ""
         ]
         .map(chunk => <div className={`chunk ${chunk}`}></div>)
 
@@ -38,11 +30,11 @@ class Explanation extends Component {
         else if (this.props.number === 1) {
 
             let expandingChunks = [
-                "plains expanding", "plains", "plains expanding", "", "",
-                "ocean expanding", "plains expanding", "plains expanding", "", "",
-                "ocean", "ocean expanding", "", "", "",
-                "", "ocean expanding", "plains expanding", "", "",
-                "", "plains expanding", "plains", "plains expanding", ""
+                "plains expandin", "plains", "plains expandin", "", "",
+                "ocean expandin", "plains expandin", "plains expandin", "", "",
+                "ocean", "ocean expandin", "", "", "",
+                "", "ocean expandin", "plains expandin", "", "",
+                "", "plains expandin", "plains", "plains expandin", ""
             ]
             .map(chunk => <div className={`chunk ${chunk}`}></div>)
 
@@ -59,10 +51,10 @@ class Explanation extends Component {
         else if (this.props.number === 2) {
 
             let fixingChunks = [
-                "plains", "plains", "plains", "plains", "plains fixing",
+                "plains", "plains", "plains", "plains", "plains fixin",
                 "ocean", "plains", "plains", "plains", "plains",
                 "ocean", "ocean", "ocean", "plains", "plains",
-                "ocean", "ocean", "plains", "plains", "plains fixing",
+                "ocean", "ocean", "plains", "plains", "plains fixin",
                 "plains", "plains", "plains", "plains", "plains"
             ]
             .map(chunk => <div className={`chunk ${chunk}`}></div>)

@@ -92,12 +92,12 @@ class App extends Component {
         <Presentation />
 
         <Lab>
-          {/* <Map 
+          <Map 
             map={this.state.map}
             biomes={this.state.biomes}
             handleMapClick={() => this.handleMapClick()}
             concatenateMap={concatenateMap}
-          /> */}
+          />
         </Lab>
 
         <Footer />

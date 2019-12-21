@@ -11,6 +11,7 @@ class Lab extends Component {
     return (
       <div id='Lab'>
         {this.props.children}
+        <div id="parameters"></div>
       </div>
     )
   }
