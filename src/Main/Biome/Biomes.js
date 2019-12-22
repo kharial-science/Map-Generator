@@ -13,7 +13,7 @@ class Biomes extends Component {
     let biomeKey = -1
     const biomeComponentArray = Array.from(this.props.biomes).map(biome => {
       biomeKey++
-      return <BiomeSelector key={biomeKey} name={biome.name} color={biome.color} number={biome.number} />
+      return <BiomeSelector key={biomeKey} id={biomeKey} name={biome.name} color={biome.color} number={biome.number} handleBiomeInputChange={this.props.handleBiomeInputChange} />
     })
 
     return (

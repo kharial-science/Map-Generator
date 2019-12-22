@@ -16,7 +16,7 @@ class Main extends Component {
       <div id='Main'>
         <Map
           map={this.props.map}
-          biomes={this.props.biomes}
+          mapBiomes={this.props.mapBiomes}
           handleMapClick={() => this.props.handleMapClick()}
           concatenateMap={this.props.concatenateMap}
         />
@@ -30,6 +30,7 @@ class Main extends Component {
 
         <Biomes
           handleAddBiomeClick={this.props.handleAddBiomeClick}
+          handleBiomeInputChange={this.props.handleBiomeInputChange}
           biomes={this.props.biomes}
         />
       </div>

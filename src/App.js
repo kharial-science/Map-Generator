@@ -19,13 +19,15 @@ class App extends Component {
     this.state = {
       mapWidth: 40,
       map: generate(this.mapWidth, 'map'),
-      biomes: [{ name: 'ocean', color: '#add8e6', number: 3 }, { name: 'plains', color: '#90ee90', number: 2 }]
+      biomes: [{ name: 'ocean', color: '#add8e6', number: 3 }, { name: 'plains', color: '#90ee90', number: 2 }],
+      mapBiomes: [{ name: 'ocean', color: '#add8e6', number: 3 }, { name: 'plains', color: '#90ee90', number: 2 }]
     }
 
     this.handleMapClick = this.handleMapClick.bind(this)
     this.handleSaveClick = this.handleSaveClick.bind(this)
     this.handleReRenderClick = this.handleReRenderClick.bind(this)
     this.handleAddBiomeClick = this.handleAddBiomeClick.bind(this)
+    this.handleBiomeInputChange = this.handleBiomeInputChange.bind(this)
     this.handleFixMapClick = this.handleFixMapClick.bind(this)
   }
 
@@ -47,10 +49,18 @@ class App extends Component {
     download(`Map (${this.state.mapWidth})`, this.state.map, document)
   }
 
+  handleBiomeInputChange(event, biomeID, inputClass) {
+    const newBiomeList = [...this.state.biomes]
+    if (inputClass !== "number") newBiomeList[biomeID][inputClass] = event.target.value
+    else newBiomeList[biomeID][inputClass] = parseInt(event.target.value, 10)
+    this.setState({biomes: newBiomeList})
+  }
+
   handleReRenderClick () {
-    const newBiomeList = []
-    Array.from(document.getElementsByClassName('biome-selector')).forEach(biomeSelector => {
-      newBiomeList.push({
+
+    let mapBiomes = []
+    Array.from(document.querySelector('#Biomes').getElementsByClassName('biome-selector')).forEach(biomeSelector => {
+      mapBiomes.push({
         name: biomeSelector.getElementsByClassName('biome-name-input')[0].value,
         color: biomeSelector.getElementsByClassName('biome-color-input')[0].value,
         number: biomeSelector.getElementsByClassName('biome-number-input')[0].value
@@ -59,12 +69,8 @@ class App extends Component {
 
     this.setState({
       mapWidth: parseInt(document.getElementById('map-dimensions').value, 10),
-      biomes: newBiomeList
-    },
-    () => {
-      this.setState({
-        map: generate(this.state.mapWidth, 'map', createAvailableBiomesArray(this.state.biomes))
-      })
+      mapBiomes: mapBiomes,
+      map: generate(this.state.mapWidth, 'map', createAvailableBiomesArray(mapBiomes))
     })
   }
 
@@ -74,7 +80,7 @@ class App extends Component {
         <Main
           // props for Map
           map={this.state.map}
-          biomes={this.state.biomes}
+          mapBiomes={this.state.mapBiomes}
           handleMapClick={() => this.handleMapClick()}
           concatenateMap={concatenateMap}
 
@@ -86,15 +92,27 @@ class App extends Component {
 
           // props for Biomes
           handleAddBiomeClick={this.handleAddBiomeClick}
+          handleBiomeInputChange={this.handleBiomeInputChange}
           biomes={this.state.biomes}
         />
 
         <Presentation />
 
-        <Lab>
+        <Lab
+          // props for InfoButtons
+          mapWidth={this.state.mapWidth}
+          handleFixMapClick={this.handleFixMapClick}
+          handleReRenderClick={this.handleReRenderClick}
+          handleSaveClick={this.handleSaveClick}
+
+          // props for Biomes
+          handleAddBiomeClick={this.handleAddBiomeClick}
+          handleBiomeInputChange={this.handleBiomeInputChange}
+          biomes={this.state.biomes}
+        >
           <Map 
             map={this.state.map}
-            biomes={this.state.biomes}
+            mapBiomes={this.state.mapBiomes}
             handleMapClick={() => this.handleMapClick()}
             concatenateMap={concatenateMap}
           />

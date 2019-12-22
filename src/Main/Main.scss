@@ -1,6 +1,26 @@
 #Main {
+
     display: grid;
-    grid-template-columns: 1fr [right-start] 2fr [right-end] 1fr [middle-start] 80vh [middle-end] 1fr [left-start] 2fr [left-end] 1fr;
+    grid-template-columns: 1fr [right-start] 15vw [right-end] 1fr [middle-start] 80vh [middle-end] 1fr [left-start] 15vw [left-end] 1fr;
     grid-template-rows: 10vh [map-start] 80vh [map-end] 30vh;
     background-color: rgba(46, 46, 46, 0.9);
+
+    #Biomes {
+
+        width: 15vw;
+        height: 80vh;
+        grid-column: right-start / right-end;
+        grid-row: map-start;
+
+    }
+
+    #InfoButtons {
+
+        width: 15vw;
+        height: 80vh;
+        grid-column: left-start / left-end;
+        grid-row: map-start;
+
+    }
+
 }
