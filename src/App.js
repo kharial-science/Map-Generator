@@ -5,10 +5,11 @@ import './App.css'
 import Main from './Main/Main'
 import Presentation from './Presentation/Presentation'
 import Lab from './Lab/Lab'
+import InfoButtons from './InfoButtons/InfoButtons'
+import Biomes from './Biome/Biomes'
+import Edit from './Edit/Edit'
+import Map from './Map/Map'
 import Footer from './Footer/Footer'
-import InfoButtons from './Main/InfoButtons/InfoButtons'
-import Biomes from './Main/Biome/Biomes'
-import Map from './Main/Map/Map'
 
 import { generate, expand, fix, concatenateMap } from './lib/generator'
 import download from './lib/download'
@@ -32,6 +33,18 @@ class App extends Component {
     this.handleBiomeInputChange = this.handleBiomeInputChange.bind(this)
     this.handleFixMapClick = this.handleFixMapClick.bind(this)
     this.handleMapWidthChange = this.handleMapWidthChange.bind(this)
+    this.handleEditClick = this.handleEditClick.bind(this)
+  }
+
+  handleMapClick () {
+    this.setState({ map: expand(this.state.map) })
+  }
+  
+  handleBiomeInputChange(event, biomeID, inputClass) {
+    const newBiomeList = [...this.state.biomes]
+    if (inputClass !== "number") newBiomeList[biomeID][inputClass] = event.target.value
+    else newBiomeList[biomeID][inputClass] = parseInt(event.target.value, 10)
+    this.setState({biomes: newBiomeList})
   }
 
   handleAddBiomeClick () {
@@ -40,8 +53,8 @@ class App extends Component {
     this.setState({ biomes: newBiomeList })
   }
 
-  handleMapClick () {
-    this.setState({ map: expand(this.state.map) })
+  handleMapWidthChange(event) {
+    this.setState({mapWidth: parseInt(event.target.value, 10)})
   }
 
   handleFixMapClick () {
@@ -52,19 +65,7 @@ class App extends Component {
     download(`Map (${this.state.mapWidth})`, this.state.map, document)
   }
 
-  handleMapWidthChange(event) {
-    this.setState({mapWidth: parseInt(event.target.value, 10)})
-  }
-
-  handleBiomeInputChange(event, biomeID, inputClass) {
-    const newBiomeList = [...this.state.biomes]
-    if (inputClass !== "number") newBiomeList[biomeID][inputClass] = event.target.value
-    else newBiomeList[biomeID][inputClass] = parseInt(event.target.value, 10)
-    this.setState({biomes: newBiomeList})
-  }
-
   handleReRenderClick () {
-
     let mapBiomes = []
     Array.from(document.querySelector('#Biomes').getElementsByClassName('biome-selector')).forEach(biomeSelector => {
       mapBiomes.push({
@@ -78,6 +79,10 @@ class App extends Component {
       mapBiomes: mapBiomes,
       map: generate(this.state.mapWidth, 'map', createAvailableBiomesArray(mapBiomes))
     })
+  }
+
+  handleEditClick() {
+    console.log('test')
   }
 
   render () {
@@ -108,28 +113,36 @@ class App extends Component {
 
         <Presentation />
 
-        <Lab>
-          <Map 
-            map={this.state.map}
-            mapBiomes={this.state.mapBiomes}
-            handleMapClick={() => this.handleMapClick()}
-            concatenateMap={concatenateMap}
-          />
+        <Lab
+          map = {
+            <Map 
+              map={this.state.map}
+              mapBiomes={this.state.mapBiomes}
+              handleMapClick={() => this.handleMapClick()}
+              concatenateMap={concatenateMap}
+            />
+          }
 
-          <InfoButtons 
-            mapWidth={this.state.mapWidth}
-            handleMapWidthChange={this.handleMapWidthChange}
-            handleFixMapClick={this.handleFixMapClick}
-            handleReRenderClick={this.handleReRenderClick}
-            handleSaveClick={this.handleSaveClick}
-          />
+          parameters = {[
+            <InfoButtons 
+              mapWidth={this.state.mapWidth}
+              handleMapWidthChange={this.handleMapWidthChange}
+              handleFixMapClick={this.handleFixMapClick}
+              handleReRenderClick={this.handleReRenderClick}
+              handleSaveClick={this.handleSaveClick}
+            />,
 
-          <Biomes 
-            handleAddBiomeClick={this.handleAddBiomeClick}
-            handleBiomeInputChange={this.handleBiomeInputChange}
-            biomes={this.state.biomes}
-          />
-        </Lab>
+            <Biomes 
+              handleAddBiomeClick={this.handleAddBiomeClick}
+              handleBiomeInputChange={this.handleBiomeInputChange}
+              biomes={this.state.biomes}
+            />,
+
+            <Edit
+              handleEditClick={this.handleEditClick}
+            />
+          ]}
+        />
 
         <Footer />
       </div>

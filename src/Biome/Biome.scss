@@ -1,0 +1,89 @@
+#Biomes {
+
+    overflow: auto;
+    box-shadow: 0 4px 12px 0px rgba(0,0,0,.25);
+    border-radius: 2vh;
+
+    display: flex;
+    flex-direction: column;
+
+    .biome-selector {
+        
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 5px;
+        transition: .15s all;
+
+        &.changed {
+            filter: hue-rotate(50deg);
+        }
+
+        .label-container {
+
+            width: 100%;
+            min-height: 7vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            background-color: lightpink;
+            justify-content: center;
+
+            label {
+                margin: 10px;
+                display: flex;
+                flex-direction: column;
+                font-family: inherit;
+                font-size: 1.3vw;
+                cursor: pointer;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-weight: 700;
+                color: #fff;
+            }
+
+        }
+
+        input {
+            width: 50%;
+            display: block;
+            padding: 5px;
+            border: none;
+            border-radius: 2px;
+            font-family: inherit;
+        }
+
+    }
+
+    .button-container {
+
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+
+        transition: all 0.2s;
+
+        &:hover {
+            filter: brightness(110%);
+        }
+
+        button {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: lightblue;
+            border: none;
+            font-family: inherit;
+            font-size: 2.5vh;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+    }
+
+}

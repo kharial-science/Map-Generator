@@ -4,12 +4,17 @@ import Chunk from './Chunk'
 
 import './Map.css'
 
-function Map (props) {
+const Map = (props) => {
   const chunkArray = props.concatenateMap(props.map)
-  let chunkKey = -1
-  const chunkComponentsArray = chunkArray.map(chunk => {
-    chunkKey++
-    return <Chunk key={chunkKey} biome={chunk ? chunk.biome : null} color={chunk ? props.mapBiomes.find(biome => biome.name === chunk.biome).color : null} status={chunk ? chunk.status : null} />
+  const chunkComponentsArray = chunkArray.map((chunk, index) => {
+    return (
+      <Chunk
+        key={index}
+        biome={chunk ? chunk.biome : null}
+        color={chunk ? props.mapBiomes.find(biome => biome.name === chunk.biome).color : null}
+        status={chunk ? chunk.status : null}
+      />
+    )
   })
 
   return (
