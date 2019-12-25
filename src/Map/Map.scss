@@ -12,6 +12,8 @@
 
     display: grid;
 
+    &.edit {}
+
     .chunk {
         width: 100%;
         height: 100%;

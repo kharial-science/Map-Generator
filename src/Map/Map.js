@@ -22,6 +22,7 @@ const Map = (props) => {
   return (
     <div
       id='Map'
+      className={props.editMode ? 'edit' : ''}
       style={{
         gridTemplateColumns: `repeat(${Math.round(Math.sqrt(chunkArray.length))}, 1fr)`,
         gridTemplateRows: `repeat(${Math.round(Math.sqrt(chunkArray.length))}, 1fr)`
