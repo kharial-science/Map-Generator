@@ -10,9 +10,11 @@ const Map = (props) => {
     return (
       <Chunk
         key={index}
+        id={index}
         biome={chunk ? chunk.biome : null}
         color={chunk ? props.mapBiomes.find(biome => biome.name === chunk.biome).color : null}
         status={chunk ? chunk.status : null}
+        handleChunkClick={props.handleChunkClick}
       />
     )
   })
@@ -24,7 +26,7 @@ const Map = (props) => {
         gridTemplateColumns: `repeat(${Math.round(Math.sqrt(chunkArray.length))}, 1fr)`,
         gridTemplateRows: `repeat(${Math.round(Math.sqrt(chunkArray.length))}, 1fr)`
       }}
-      onClick={() => props.handleMapClick()}
+      onClick={props.editMode ? () => {} : props.handleMapClick}
     >
 
       {chunkComponentsArray}

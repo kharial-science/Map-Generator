@@ -23,21 +23,38 @@ class App extends Component {
       mapWidth: 40,
       map: generate(this.mapWidth, 'map'),
       biomes: [{ name: 'ocean', color: '#add8e6', number: 3 }, { name: 'plains', color: '#90ee90', number: 2 }],
-      mapBiomes: [{ name: 'ocean', color: '#add8e6', number: 3 }, { name: 'plains', color: '#90ee90', number: 2 }]
+      mapBiomes: [{ name: 'ocean', color: '#add8e6', number: 3 }, { name: 'plains', color: '#90ee90', number: 2 }],
+      editBiomes: [],
+      editMode: false,
     }
 
     this.handleMapClick = this.handleMapClick.bind(this)
+    this.handleChunkClick = this.handleChunkClick.bind(this)
+    this.handleBiomeInputChange = this.handleBiomeInputChange.bind(this)
+    this.handleAddBiomeClick = this.handleAddBiomeClick.bind(this)
+    this.handleMapWidthChange = this.handleMapWidthChange.bind(this)
+    this.handleFixMapClick = this.handleFixMapClick.bind(this)
     this.handleSaveClick = this.handleSaveClick.bind(this)
     this.handleReRenderClick = this.handleReRenderClick.bind(this)
-    this.handleAddBiomeClick = this.handleAddBiomeClick.bind(this)
-    this.handleBiomeInputChange = this.handleBiomeInputChange.bind(this)
-    this.handleFixMapClick = this.handleFixMapClick.bind(this)
-    this.handleMapWidthChange = this.handleMapWidthChange.bind(this)
     this.handleEditClick = this.handleEditClick.bind(this)
   }
 
-  handleMapClick () {
+  handleMapClick() {
     this.setState({ map: expand(this.state.map) })
+  }
+
+  handleChunkClick(chunkID) {
+    if (this.state.editMode) {
+      const newMap = this.state.map
+      const newChunk = { biome: document.getElementById('edit-biome-name-input').value + document.getElementById('edit-biome-color-input').value, status: 'expanding'}
+      newMap[Math.floor(chunkID / this.state.mapWidth)][chunkID % this.state.mapWidth] = newChunk
+      const newEditBiomes = this.state.editBiomes
+      if (!newEditBiomes.find(biome => biome.name === newChunk.biome)) newEditBiomes.push({ name: newChunk.biome, color: document.getElementById('edit-biome-color-input').value})
+      this.setState({
+        map: newMap,
+        editBiomes: newEditBiomes
+      })
+    }
   }
   
   handleBiomeInputChange(event, biomeID, inputClass) {
@@ -77,12 +94,13 @@ class App extends Component {
 
     this.setState({
       mapBiomes: mapBiomes,
+      editBiomes: [],
       map: generate(this.state.mapWidth, 'map', createAvailableBiomesArray(mapBiomes))
     })
   }
 
   handleEditClick() {
-    console.log('test')
+    this.setState({ editMode: !this.state.editMode })
   }
 
   render () {
@@ -91,9 +109,11 @@ class App extends Component {
         <Main>
           <Map 
             map={this.state.map}
-            mapBiomes={this.state.mapBiomes}
-            handleMapClick={() => this.handleMapClick()}
+            mapBiomes={this.state.mapBiomes.concat(this.state.editBiomes)}
+            handleMapClick={this.handleMapClick}
+            handleChunkClick={this.handleChunkClick}
             concatenateMap={concatenateMap}
+            editMode={this.state.editMode}
           />
 
           <InfoButtons 
@@ -117,9 +137,11 @@ class App extends Component {
           map = {
             <Map 
               map={this.state.map}
-              mapBiomes={this.state.mapBiomes}
-              handleMapClick={() => this.handleMapClick()}
+              mapBiomes={this.state.mapBiomes.concat(this.state.editBiomes)}
+              handleMapClick={this.handleMapClick}
+              handleChunkClick={this.handleChunkClick}
               concatenateMap={concatenateMap}
+              editMode={this.state.editMode}
             />
           }
 

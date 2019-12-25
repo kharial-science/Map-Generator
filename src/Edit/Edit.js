@@ -14,14 +14,14 @@ const Edit = (props) => {
                 <div className='label-container'>
                     <label>
                         Biome Name
-                        <input className='biome-name-input' type='text' />
+                        <input id='edit-biome-name-input' className='biome-name-input' type='text' />
                     </label>
                 </div>
 
                 <div className='label-container'>
                     <label>
                         Biome Color
-                        <input className='biome-color-input' type='color' />
+                        <input id='edit-biome-color-input' className='biome-color-input' type='color' />
                     </label>
                 </div>
             </div>
