@@ -46,22 +46,45 @@
             grid-template-columns: [text-start] 1fr [number-pos] 1fr [image-start] 1fr 1fr;
             grid-template-rows: 60px;
 
+            &.shown {
+
+                .number {
+                    animation: comeFromTop 1.5s forwards;
+                }
+
+                .title {
+                    animation: comeFromTop 1.5s .15s forwards;
+                }
+
+                p {
+                    animation: comeFromLeft 1.5s .3s forwards;
+                }
+
+                .image {
+                    animation: comeFromRight 1.5s .45s forwards;
+                }
+
+            }
+
             .number {
                 grid-column: number-pos / span 1;
                 font-size: 30px;
                 line-height: 0;
+                opacity: 0;
             }
 
             .title {
                 grid-column: span 2;
                 font-size: 30px;
                 line-height: 0;
+                opacity: 0;
             }
 
             p {
                 grid-column: text-start / span 2;
                 font-size: 20px;
                 text-align: right;
+                opacity: 0;
             }
 
             .image {
@@ -72,6 +95,7 @@
                 display: grid;
                 grid-template-columns: repeat(5, 1fr);
                 border: dashed 1px rgba(0, 0, 0, 0.1);
+                opacity: 0;
 
                 &.sow {
                     border-radius: 1vw;
@@ -131,4 +155,37 @@
 @keyframes fixing {
     0% { opacity: 0; }
     100% { opacity: 100; }
+}
+
+@keyframes comeFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes comeFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes comeFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
 }
