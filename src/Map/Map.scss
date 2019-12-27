@@ -9,14 +9,22 @@
     background-color: white;
     border-radius: 2vh;
     overflow: hidden;
+    transition: .15s all;
 
     display: grid;
 
-    &.edit {}
+    &.edit {
+        background-color: #2E2E2E;
+    }
 
-    .chunk {
+    .Chunk {
         width: 100%;
         height: 100%;
+
+        &:hover {
+            background-color: white;
+        }
+
     }
 
     .expanding {

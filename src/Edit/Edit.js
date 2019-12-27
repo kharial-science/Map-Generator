@@ -6,7 +6,7 @@ const Edit = (props) => {
     return (
         <div id="Edit">
 
-            <div className="button-container">
+            <div className={`button-container ${props.editMode ? 'edit' : ''}`}>
                 <button onClick={props.handleEditClick}>edit mode</button>
             </div>
 

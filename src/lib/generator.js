@@ -1,20 +1,29 @@
 import _ from 'lodash'
 
-function expand (map) {
+function expand(map, options = {6: 0.3, 7: 0.75, 8: 0.3, 11: 0.75, 12: 0.75, 15: 0.3, 16: 0.75, 17: 0.3}) {
   const newMap = _.cloneDeep(map)
   let x = 0
   for (const row of map) {
     let y = 0
     for (const chunk of row) {
       if (chunk && chunk.status === 'expanding') {
-        const directChunksRelative = [[1, 0], [0, 1], [-1, 0], [0, -1]]
-        const diagChunksRelative = [[1, 1], [1, -1], [-1, -1], [-1, 1]]
-        directChunksRelative.forEach(relativeCoords => {
-          if (Math.random() <= 0.75) {
-            if (x + relativeCoords[0] >= 0 && x + relativeCoords[0] < map.length && y + relativeCoords[1] >= 0 && y + relativeCoords[1] < map.length) {
-              if (!newMap[x + relativeCoords[0]][y + relativeCoords[1]] || !newMap[x + relativeCoords[0]][y + relativeCoords[1]].biome) {
+
+        const chunkRelatives = [
+          [-2, 2], [-1, 2], [0, 2], [1, 2], [2, 2],
+          [-2, 1], [-1, 1], [0, 1], [1, 1], [2, 1],
+          [-2, 0], [-1, 0], /*[0, 0],*/ [1, 0], [2, 0],
+          [-2, -1], [-1, -1], [0, -1], [1, -1], [2, -1],
+          [-2, -2], [-1, -2], [0, -2], [1, -2], [2, -2]
+        ]
+        // const directChunksRelative = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+        // const diagChunksRelative = [[1, 1], [1, -1], [-1, -1], [-1, 1]]
+
+        Object.entries(options).filter(entry => entry[1] > 0).forEach(entry => {
+          if (Math.random() <= entry[1]) {
+            if (x + chunkRelatives[entry[0]][0] >= 0 && x + chunkRelatives[entry[0]][0] < map.length && y + chunkRelatives[entry[0]][1] >= 0 && y + chunkRelatives[entry[0]][1] < map.length) {
+              if (!newMap[x + chunkRelatives[entry[0]][0]][y + chunkRelatives[entry[0]][1]] || !newMap[x + chunkRelatives[entry[0]][0]][y + chunkRelatives[entry[0]][1]].biome) {
                 try {
-                  newMap[x + relativeCoords[0]][y + relativeCoords[1]] = {
+                  newMap[x + chunkRelatives[entry[0]][0]][y + chunkRelatives[entry[0]][1]] = {
                     biome: map[x][y].biome.slice(),
                     status: 'expanding'
                   }
@@ -24,21 +33,38 @@ function expand (map) {
           }
           newMap[x][y].status = 'done'
         })
-        diagChunksRelative.forEach(relativeCoords => {
-          if (Math.random() <= 0.3) {
-            if (x + relativeCoords[0] >= 0 && x + relativeCoords[0] < map.length && y + relativeCoords[1] >= 0 && y + relativeCoords[1] < map.length) {
-              if (!newMap[x + relativeCoords[0]][y + relativeCoords[1]] || !newMap[x + relativeCoords[0]][y + relativeCoords[1]].biome) {
-                try {
-                  newMap[x + relativeCoords[0]][y + relativeCoords[1]] = {
-                    biome: map[x][y].biome.slice(),
-                    status: 'expanding'
-                  }
-                } catch (e) {}
-              }
-            }
-          }
-          newMap[x][y].status = 'done'
-        })
+
+
+        // directChunksRelative.forEach(relativeCoords => {
+        //   if (Math.random() <= 0.75) {
+        //     if (x + relativeCoords[0] >= 0 && x + relativeCoords[0] < map.length && y + relativeCoords[1] >= 0 && y + relativeCoords[1] < map.length) {
+        //       if (!newMap[x + relativeCoords[0]][y + relativeCoords[1]] || !newMap[x + relativeCoords[0]][y + relativeCoords[1]].biome) {
+        //         try {
+        //           newMap[x + relativeCoords[0]][y + relativeCoords[1]] = {
+        //             biome: map[x][y].biome.slice(),
+        //             status: 'expanding'
+        //           }
+        //         } catch (e) {}
+        //       }
+        //     }
+        //   }
+        //   newMap[x][y].status = 'done'
+        // })
+        // diagChunksRelative.forEach(relativeCoords => {
+        //   if (Math.random() <= 0.3) {
+        //     if (x + relativeCoords[0] >= 0 && x + relativeCoords[0] < map.length && y + relativeCoords[1] >= 0 && y + relativeCoords[1] < map.length) {
+        //       if (!newMap[x + relativeCoords[0]][y + relativeCoords[1]] || !newMap[x + relativeCoords[0]][y + relativeCoords[1]].biome) {
+        //         try {
+        //           newMap[x + relativeCoords[0]][y + relativeCoords[1]] = {
+        //             biome: map[x][y].biome.slice(),
+        //             status: 'expanding'
+        //           }
+        //         } catch (e) {}
+        //       }
+        //     }
+        //   }
+        //   newMap[x][y].status = 'done'
+        // })
       }
       y++
     }

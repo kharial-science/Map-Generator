@@ -162,6 +162,7 @@ class App extends Component {
 
             <Edit
               handleEditClick={this.handleEditClick}
+              editMode={this.state.editMode}
             />
           ]}
         />
