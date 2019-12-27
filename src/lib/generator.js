@@ -1,6 +1,6 @@
 import _ from 'lodash'
 
-function expand(map, options = {6: 0.3, 7: 0.75, 8: 0.3, 11: 0.75, 12: 0.75, 15: 0.3, 16: 0.75, 17: 0.3}) {
+function expand(map, options) {
   const newMap = _.cloneDeep(map)
   let x = 0
   for (const row of map) {
@@ -9,14 +9,12 @@ function expand(map, options = {6: 0.3, 7: 0.75, 8: 0.3, 11: 0.75, 12: 0.75, 15:
       if (chunk && chunk.status === 'expanding') {
 
         const chunkRelatives = [
-          [-2, 2], [-1, 2], [0, 2], [1, 2], [2, 2],
-          [-2, 1], [-1, 1], [0, 1], [1, 1], [2, 1],
-          [-2, 0], [-1, 0], /*[0, 0],*/ [1, 0], [2, 0],
-          [-2, -1], [-1, -1], [0, -1], [1, -1], [2, -1],
-          [-2, -2], [-1, -2], [0, -2], [1, -2], [2, -2]
+          [-2, -2], [-2, -1], [-2, 0], [-2, 1], [-2, 2],
+          [-1, -2], [-1, -1], [-1, 0], [-1, 1], [-1, 2],
+          [0, -2], [0, -1], /*[0, 0],*/ [0, 1], [0, 2],
+          [1, -2], [1, -1], [1, 0], [1, 1], [1, 2],
+          [2, -2], [2, 1], [2, 0], [2, 1], [2, 2]
         ]
-        // const directChunksRelative = [[1, 0], [0, 1], [-1, 0], [0, -1]]
-        // const diagChunksRelative = [[1, 1], [1, -1], [-1, -1], [-1, 1]]
 
         Object.entries(options).filter(entry => entry[1] > 0).forEach(entry => {
           if (Math.random() <= entry[1]) {
@@ -34,37 +32,6 @@ function expand(map, options = {6: 0.3, 7: 0.75, 8: 0.3, 11: 0.75, 12: 0.75, 15:
           newMap[x][y].status = 'done'
         })
 
-
-        // directChunksRelative.forEach(relativeCoords => {
-        //   if (Math.random() <= 0.75) {
-        //     if (x + relativeCoords[0] >= 0 && x + relativeCoords[0] < map.length && y + relativeCoords[1] >= 0 && y + relativeCoords[1] < map.length) {
-        //       if (!newMap[x + relativeCoords[0]][y + relativeCoords[1]] || !newMap[x + relativeCoords[0]][y + relativeCoords[1]].biome) {
-        //         try {
-        //           newMap[x + relativeCoords[0]][y + relativeCoords[1]] = {
-        //             biome: map[x][y].biome.slice(),
-        //             status: 'expanding'
-        //           }
-        //         } catch (e) {}
-        //       }
-        //     }
-        //   }
-        //   newMap[x][y].status = 'done'
-        // })
-        // diagChunksRelative.forEach(relativeCoords => {
-        //   if (Math.random() <= 0.3) {
-        //     if (x + relativeCoords[0] >= 0 && x + relativeCoords[0] < map.length && y + relativeCoords[1] >= 0 && y + relativeCoords[1] < map.length) {
-        //       if (!newMap[x + relativeCoords[0]][y + relativeCoords[1]] || !newMap[x + relativeCoords[0]][y + relativeCoords[1]].biome) {
-        //         try {
-        //           newMap[x + relativeCoords[0]][y + relativeCoords[1]] = {
-        //             biome: map[x][y].biome.slice(),
-        //             status: 'expanding'
-        //           }
-        //         } catch (e) {}
-        //       }
-        //     }
-        //   }
-        //   newMap[x][y].status = 'done'
-        // })
       }
       y++
     }
@@ -73,7 +40,7 @@ function expand(map, options = {6: 0.3, 7: 0.75, 8: 0.3, 11: 0.75, 12: 0.75, 15:
   return newMap
 }
 
-function generate (size = 40, type = 'chunkArray', availableBiomes = ['ocean', 'ocean', 'ocean', 'plains', 'plains', 'plains']) {
+function generate(size = 40, type = 'chunkArray', availableBiomes = ['ocean', 'ocean', 'ocean', 'plains', 'plains', 'plains']) {
   const row = new Array(size).fill(null)
   const map = new Array(size).fill(null).map(() => row.slice())
 
@@ -89,7 +56,7 @@ function generate (size = 40, type = 'chunkArray', availableBiomes = ['ocean', '
   return concatenateMap(map)
 }
 
-function fix (map) {
+function fix(map) {
   const newMap = _.cloneDeep(map)
   let x = 0
   for (const row of map) {
@@ -120,7 +87,7 @@ function fix (map) {
   return newMap
 }
 
-function isNullChunkInMap (map) {
+function isNullChunkInMap(map) {
   for (const row of map) {
     for (const chunk of row) {
       if (!chunk) {
@@ -131,17 +98,16 @@ function isNullChunkInMap (map) {
   return false
 }
 
-function findRandomChunk (size) {
+function findRandomChunk(size) {
   const x = Math.floor(Math.random() * size)
   const y = Math.floor(Math.random() * size)
   return { x, y }
 }
 
-function concatenateMap (nestedArrays) {
+function concatenateMap(nestedArrays) {
   let concatenatedArray = []
   concatenatedArray = concatenatedArray.concat(...nestedArrays)
   return concatenatedArray
 }
 
-// const chunkArray = ['ocean', 'ocean', 'plains', 'plains']
 export { concatenateMap, generate, expand, fix }

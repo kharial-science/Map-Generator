@@ -8,6 +8,7 @@ import Lab from './Lab/Lab'
 import InfoButtons from './InfoButtons/InfoButtons'
 import Biomes from './Biome/Biomes'
 import Edit from './Edit/Edit'
+import Probabilities from './Probabilities/Probabilities'
 import Map from './Map/Map'
 import Footer from './Footer/Footer'
 
@@ -26,6 +27,7 @@ class App extends Component {
       mapBiomes: [{ name: 'ocean', color: '#add8e6', number: 3 }, { name: 'plains', color: '#90ee90', number: 2 }],
       editBiomes: [],
       editMode: false,
+      probabilities: {} /* { 6: 0.3, 7: 0.75, 8: 0.3, 11: 0.75, 12: 0.75, 15: 0.3, 16: 0.75, 17: 0.3 } */
     }
 
     this.handleMapClick = this.handleMapClick.bind(this)
@@ -37,10 +39,11 @@ class App extends Component {
     this.handleSaveClick = this.handleSaveClick.bind(this)
     this.handleReRenderClick = this.handleReRenderClick.bind(this)
     this.handleEditClick = this.handleEditClick.bind(this)
+    this.handleProbabilityChange = this.handleProbabilityChange.bind(this)
   }
 
   handleMapClick() {
-    this.setState({ map: expand(this.state.map) })
+    this.setState({ map: expand(this.state.map, this.state.probabilities) })
   }
 
   handleChunkClick(chunkID) {
@@ -103,6 +106,13 @@ class App extends Component {
     this.setState({ editMode: !this.state.editMode })
   }
 
+  handleProbabilityChange(selectedChunk, event) {
+    const newProbabilities = this.state.probabilities
+    newProbabilities[selectedChunk] = parseFloat(event.target.value, 10)
+    console.log(newProbabilities)
+    this.setState({ probabilities : newProbabilities })
+  }
+
   render () {
     return (
       <div id='App'>
@@ -163,7 +173,12 @@ class App extends Component {
             <Edit
               handleEditClick={this.handleEditClick}
               editMode={this.state.editMode}
-            />
+            />,
+
+            <Probabilities
+              handleProbabilityChange={this.handleProbabilityChange}
+              probabilities={this.state.probabilities}
+            />,
           ]}
         />
 

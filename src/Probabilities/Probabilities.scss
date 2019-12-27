@@ -1,0 +1,43 @@
+#Probabilities {
+
+    .chunks-container {
+
+        height: 400px;
+        width: 400px;
+
+        border: dashed 1px rgba(0, 0, 0, 0.1);
+        border-radius: 2vh;
+
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+
+        .base-chunk,
+        .ChunkProbability {
+            width: 80px;
+            height: 80px;
+        }
+
+        .ChunkProbability:hover {
+            background-color: lightgreen;
+        }
+
+        .base-chunk {
+            background-color: royalblue;
+        }
+
+    }
+
+    .cursor-input-container {
+
+        height: 50px;
+
+        background-color: lightpink;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+}

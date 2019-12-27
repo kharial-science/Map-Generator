@@ -11,7 +11,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
+        // justify-content: space-between;
 
         #Map {
             height: 500px;
@@ -21,28 +21,44 @@
 
         #parameters {
 
+            margin-left: 150px;
             width: calc(100% - calc(500px + 12vw));
             height: 500px;
             
             background-color: white;
             border-radius: 2vh 0 0 2vh;
             box-shadow: 0 4px 12px 0px rgba(0,0,0,.25);
+            overflow-x: scroll;
+            overflow-y: hidden;
+            box-sizing: border-box;
 
-            display: flex;
-            flex-direction: row;
+            display: grid;
+            grid-template-columns: auto auto auto auto;
             align-items: center;
 
-            &>* {
+            & > * {
                 margin: 0 20px;
             }
 
             #Biomes {
+                width: 200px;
                 height: 450px;
+                margin-left: 50px;
+                position: relative;
             }
 
             #InfoButtons {
+                width: 200px;
                 height: 450px;
                 margin-left: 50px;
+                float: left;
+            }
+
+            #Edit {
+                width: 200px;
+                height: 450px;
+                margin-left: 50px;
+                float: left;
             }
 
         }
