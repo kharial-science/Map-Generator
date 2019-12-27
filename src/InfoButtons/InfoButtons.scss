@@ -32,7 +32,7 @@
             background-color: lightgreen;
             cursor: pointer;
             font-family: inherit;
-            font-size: 1.3vw;
+            font-size: 5vw;
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -63,7 +63,7 @@
             background-color: lightblue;
             border: none;
             font-family: inherit;
-            font-size: 1.3vw;
+            font-size: 5vw;
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -80,6 +80,24 @@
         border: none;
         border-radius: 2px;
         font-family: inherit;
+    }
+
+    @media only screen and (min-width: 768px) {
+
+        .label-container {
+            label {
+                font-size: 1.3vw;
+            }
+        }
+
+        .button-container {
+            
+            button {
+                font-size: 1.3vw;
+            }
+
+        }
+
     }
 
 }

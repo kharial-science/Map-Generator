@@ -1,25 +1,50 @@
 #Main {
 
-    display: grid;
-    grid-template-columns: 1fr [right-start] 15vw [right-end] 1fr [middle-start] 80vh [middle-end] 1fr [left-start] 15vw [left-end] 1fr;
-    grid-template-rows: 10vh [map-start] 80vh [map-end] 30vh;
+    display: flex;
+    flex-direction: column;
     background-color: rgba(46, 46, 46, 0.9);
 
     #Biomes {
 
-        width: 15vw;
-        height: 80vh;
+        width: 90vw;
+        height: 50vh;
         grid-column: right-start / right-end;
         grid-row: map-start;
+        margin: 0vw 5vw 20vw 5vw;
 
     }
 
     #InfoButtons {
 
-        width: 15vw;
-        height: 80vh;
+        width: 90vw;
+        height: 50vh;
         grid-column: left-start / left-end;
         grid-row: map-start;
+        margin: 0vw 5vw 0vw 5vw;
+
+    }
+
+    @media only screen and (min-width: 768px) {
+        display: grid;
+        grid-template-columns: 1fr [right-start] 15vw [right-end] 1fr [middle-start] 80vh [middle-end] 1fr [left-start] 15vw [left-end] 1fr;
+        grid-template-rows: 10vh [map-start] 80vh [map-end] 30vh;
+        background-color: rgba(46, 46, 46, 0.9);
+
+        #InfoButtons {
+
+            width: 15vw;
+            height: 80vh;
+            margin: 0px;
+    
+        }
+
+        #Biomes {
+            
+            width: 15vw;
+            height: 80vh;
+            margin: 0px;
+
+        }
 
     }
 

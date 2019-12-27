@@ -1,44 +1,50 @@
 #Lab {
 
-    height: 700px;
+    display: none;
 
-    background-color: rgba(46, 46, 46, 0.9);
+    @media only screen and (min-width: 768px) {
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+        height: 700px;
 
-    #Map {
-        height: 500px;
-        width: 500px;
-        margin-left: 5vw;
-    }
-
-    #parameters {
-
-        width: calc(100% - calc(500px + 12vw));
-        height: 500px;
-        
-        background-color: white;
-        border-radius: 2vh 0 0 2vh;
-        box-shadow: 0 4px 12px 0px rgba(0,0,0,.25);
+        background-color: rgba(46, 46, 46, 0.9);
 
         display: flex;
         flex-direction: row;
         align-items: center;
+        justify-content: space-between;
 
-        &>* {
-            margin: 0 20px;
+        #Map {
+            height: 500px;
+            width: 500px;
+            margin-left: 5vw;
         }
 
-        #Biomes {
-            height: 450px;
-        }
+        #parameters {
 
-        #InfoButtons {
-            height: 450px;
-            margin-left: 50px;
+            width: calc(100% - calc(500px + 12vw));
+            height: 500px;
+            
+            background-color: white;
+            border-radius: 2vh 0 0 2vh;
+            box-shadow: 0 4px 12px 0px rgba(0,0,0,.25);
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            &>* {
+                margin: 0 20px;
+            }
+
+            #Biomes {
+                height: 450px;
+            }
+
+            #InfoButtons {
+                height: 450px;
+                margin-left: 50px;
+            }
+
         }
 
     }
