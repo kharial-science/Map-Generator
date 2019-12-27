@@ -16,6 +16,7 @@ class Probabilities extends Component {
     }
 
     handleChunkClick(id) {
+        console.log(id)
         this.setState({ selectedChunk: id })
     }
 
@@ -29,6 +30,7 @@ class Probabilities extends Component {
                     id={i}
                     handleChunkClick={this.handleChunkClick}
                     probability={this.props.probabilities[i]}
+                    isSelected={this.state.selectedChunk === i ? true : false}
                 />
             )
         }
@@ -43,11 +45,12 @@ class Probabilities extends Component {
 
                 <div className="cursor-input-container">
                     <label for="probability">Probability</label>
-                    <input type="range" id="probability-range" name="probability" min="0" max="1" step="0.01"
-                        value={this.props.probabilities[this.state.selectedChunk] ? this.props.probabilities[this.state.selectedChunk] : 0}
-                        onChange={(event) => this.props.handleProbabilityChange(this.state.selectedChunk, event)} 
-                    />
-                    
+                    {typeof this.state.selectedChunk === 'number' && 
+                        <input type="range" id="probability-range" name="probability" min="0" max="1" step="0.01"
+                            value={this.props.probabilities[this.state.selectedChunk] ? this.props.probabilities[this.state.selectedChunk] : 0}
+                            onChange={(event) => this.props.handleProbabilityChange(this.state.selectedChunk, event)} 
+                        />
+                    }                    
                 </div>
 
             </div>

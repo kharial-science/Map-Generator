@@ -5,7 +5,10 @@ const ChunkProbability = (props) => {
         <div 
             className="ChunkProbability"
             onClick={() => props.handleChunkClick(props.id)}
-            style={{backgroundColor: props.probability ? `rgba(65, 105, 225, ${props.probability})` : 'white'}}
+            style={{
+                backgroundColor: props.probability ? `rgba(65, 105, 225, ${props.probability})` : 'rgba(0, 0, 0, .07)',
+                transform: props.isSelected ? "scale(.9)" : null,
+            }}
         />
     )
 }
