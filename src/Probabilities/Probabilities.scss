@@ -1,12 +1,17 @@
 #Probabilities {
 
+    width: 400px;
+    border-radius: 2vh;
+    box-shadow: 0 4px 12px 0px rgba(0,0,0,.25);
+
     .chunks-container {
 
         height: 400px;
         width: 400px;
 
-        border: dashed 1px rgba(0, 0, 0, 0.1);
-        border-radius: 2vh;
+        border-radius: 2vh 2vh 0 0;
+        // border: dashed 1px lightpink;
+        overflow: hidden;
 
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -18,8 +23,12 @@
             height: 80px;
         }
 
+        .ChunkProbability {
+            transition: .1s all;
+        }
+
         .ChunkProbability:hover {
-            background-color: lightgreen;
+            filter: brightness(.8);
         }
 
         .base-chunk {
@@ -31,13 +40,16 @@
     .cursor-input-container {
 
         height: 50px;
+        width: 400px;
 
+        border-radius: 0 0 2vh 2vh;
         background-color: lightpink;
 
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-evenly;
+
     }
 
 }

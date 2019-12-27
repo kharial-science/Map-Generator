@@ -29,11 +29,10 @@
             border-radius: 2vh 0 0 2vh;
             box-shadow: 0 4px 12px 0px rgba(0,0,0,.25);
             overflow-x: scroll;
-            overflow-y: hidden;
-            box-sizing: border-box;
+            // overflow-y: hidden;
 
             display: grid;
-            grid-template-columns: auto auto auto auto;
+            grid-template-columns: auto auto auto auto auto;
             align-items: center;
 
             & > * {
@@ -44,21 +43,27 @@
                 width: 200px;
                 height: 450px;
                 margin-left: 50px;
-                position: relative;
             }
 
             #InfoButtons {
                 width: 200px;
                 height: 450px;
                 margin-left: 50px;
-                float: left;
             }
 
             #Edit {
                 width: 200px;
                 height: 450px;
                 margin-left: 50px;
-                float: left;
+            }
+
+            #Probabilities {
+                margin-left: 50px;
+            }
+
+            .end-div {
+                width: 10px;
+                height: 10px;
             }
 
         }

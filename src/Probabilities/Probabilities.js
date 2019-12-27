@@ -28,6 +28,7 @@ class Probabilities extends Component {
                     key={i}
                     id={i}
                     handleChunkClick={this.handleChunkClick}
+                    probability={this.props.probabilities[i]}
                 />
             )
         }

@@ -27,7 +27,7 @@ class App extends Component {
       mapBiomes: [{ name: 'ocean', color: '#add8e6', number: 3 }, { name: 'plains', color: '#90ee90', number: 2 }],
       editBiomes: [],
       editMode: false,
-      probabilities: {} /* { 6: 0.3, 7: 0.75, 8: 0.3, 11: 0.75, 12: 0.75, 15: 0.3, 16: 0.75, 17: 0.3 } */
+      probabilities: { 6: 0.3, 7: 0.75, 8: 0.3, 11: 0.75, 12: 0.75, 15: 0.3, 16: 0.75, 17: 0.3 }
     }
 
     this.handleMapClick = this.handleMapClick.bind(this)
@@ -179,6 +179,8 @@ class App extends Component {
               handleProbabilityChange={this.handleProbabilityChange}
               probabilities={this.state.probabilities}
             />,
+
+            <div className="end-div" />
           ]}
         />
 
