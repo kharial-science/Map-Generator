@@ -82,7 +82,11 @@
         font-family: inherit;
     }
 
-    @media only screen and (min-width: 768px) {
+}
+
+@media only screen and (min-width: 768px) {
+
+    #Explanation {
 
         .label-container {
             label {
@@ -95,7 +99,7 @@
             button {
                 font-size: 1.3vw;
             }
-
+    
         }
 
     }

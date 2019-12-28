@@ -10,16 +10,15 @@
 
     .footer-title-container {
         
-        margin-left: 5vw;
-        padding: 0 15px;
+        margin: 5vw;
+        padding: 5vw;
         height: 50px;
+        width: 80vw;
 
         background-color: white;
         border-radius: .6vh;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: block;
 
     }
 
@@ -60,6 +59,19 @@
         cursor: pointer;
         animation: rotate 20s 1.5s infinite forwards linear;
 
+    }
+
+    @media only screen and (min-width: 768px) {
+
+        .footer-title-container {
+
+            width: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
     }
     
 }

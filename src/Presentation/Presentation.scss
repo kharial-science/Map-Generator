@@ -38,13 +38,16 @@
         justify-content: space-evenly;
 
         .Explanation {
-            width: 20vw;
+            width: 100vw;
+            position: absolute;
+            opacity: 0;
 
             // background-color: grey;
 
             display: grid;
             grid-template-columns: [text-start] 1fr [number-pos] 1fr [image-start] 1fr 1fr;
             grid-template-rows: 60px;
+
 
             &.shown {
 
@@ -131,8 +134,67 @@
 
         }
 
+        .exp-one {
+            animation: 9s linear 0s infinite slide;
+        }
+
+        .exp-two {
+            animation: 9s linear 3s infinite slide;
+        }
+
+        .exp-three {
+            animation: 9s linear 6s infinite slide;
+        }
+
     }
 
+    @media only screen and (min-width: 768px) {
+
+        #explanation-container {
+
+            .Explanation {
+
+                width: 20vw;
+                position: relative;
+                opacity: 1;
+
+                display: grid;
+                grid-template-columns: [text-start] 1fr [number-pos] 1fr [image-start] 1fr 1fr;
+                grid-template-rows: 60px;
+                animation: none;
+
+
+            }
+
+        }
+
+    }
+
+}
+
+@keyframes slide {
+    0% {
+        opacity: 0;
+    }
+    32% {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    33% {
+        opacity: 1;
+        transform: none;
+    }
+    65% {
+        opacity: 1;
+        transform: none;
+    }
+    66% {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    100% {
+        opacity: 0;
+    }
 }
 
 @keyframes sowing {
