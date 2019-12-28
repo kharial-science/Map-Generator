@@ -5,20 +5,12 @@
 
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 
     .footer-title-container {
         
-        margin: 5vw;
-        padding: 5vw;
-        height: 50px;
-        width: 80vw;
-
-        background-color: white;
-        border-radius: .6vh;
-
-        display: block;
+        display: none;
 
     }
 
@@ -53,7 +45,8 @@
 
     #ourLogo {
 
-        height: 60px;
+        margin-left: 10px;
+        height: 50px;
         border-radius: 50%;
         box-shadow: 0 4px 12px 0px rgba(0,0,0,.25);
         cursor: pointer;
@@ -63,15 +56,30 @@
 
     @media only screen and (min-width: 768px) {
 
+        justify-content: space-between;
+
         .footer-title-container {
 
-            width: auto;
+            margin-left: 5vw;
+            padding: 0 15px;
+            height: 50px;
+
+            background-color: white;
+            border-radius: .6vh;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
         }
+
+        #ourLogo {
+
+            height: 60px;
+            margin: 0;
+
+        }
+
     }
     
 }
