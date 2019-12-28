@@ -8,7 +8,43 @@ body {
 }
 
 #App {
-    background-image: url('./assets/Main_background.jpg');
-    background-size: cover;
-    background-attachment: fixed;
+
+    .background {
+
+        height: 200vw;
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+
+        background-image: url('./assets/Main_background.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+
+        display: grid;
+
+    }
+
+}
+
+@keyframes chunksAnimation {
+    0% {
+        opacity: 1;
+    }
+    46% {
+        opacity: 1;
+    }
+    48% {
+        opacity: 0;
+    }
+    52% {
+        opacity: 0;
+    }
+    54% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
 }

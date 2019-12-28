@@ -2,16 +2,16 @@ import React, { Component } from 'react'
 
 import './App.css'
 
-import Main from './Main/Main'
-import Presentation from './Presentation/Presentation'
-import Lab from './Lab/Lab'
-import NoLab from './NoLab/NoLab'
-import InfoButtons from './InfoButtons/InfoButtons'
-import Biomes from './Biome/Biomes'
-import Edit from './Edit/Edit'
-import Probabilities from './Probabilities/Probabilities'
-import Map from './Map/Map'
-import Footer from './Footer/Footer'
+import Main from './components/Main/Main'
+import Presentation from './components/Presentation/Presentation'
+import Lab from './components/Lab/Lab'
+import NoLab from './components/NoLab/NoLab'
+import InfoButtons from './components/InfoButtons/InfoButtons'
+import Biomes from './components/Biome/Biomes'
+import Edit from './components/Edit/Edit'
+import Probabilities from './components/Probabilities/Probabilities'
+import Map from './components/Map/Map'
+import Footer from './components/Footer/Footer'
 
 import { generate, expand, fix, concatenateMap } from './lib/generator'
 import download from './lib/download'
@@ -22,6 +22,7 @@ class App extends Component {
     super(props)
 
     this.state = {
+      backgroundChunks: [],
       mapWidth: 40,
       map: generate(this.mapWidth, 'map'),
       biomes: [{ name: 'ocean', color: '#add8e6', number: 3 }, { name: 'plains', color: '#90ee90', number: 2 }],
@@ -41,6 +42,29 @@ class App extends Component {
     this.handleReRenderClick = this.handleReRenderClick.bind(this)
     this.handleEditClick = this.handleEditClick.bind(this)
     this.handleProbabilityChange = this.handleProbabilityChange.bind(this)
+  }
+
+  componentDidMount() {
+    const backgroundChunksPos = []
+    for (let i = 0; i < 100; i++) {
+      backgroundChunksPos.push([Math.floor(Math.random()*20), Math.floor(Math.random()*40)])
+    }
+    const backgroundChunks = backgroundChunksPos.map((pos, index) => {
+      return (
+        <div
+          key={index}
+          style={{
+            width: "100%",
+            height: "100%",
+            gridColumnStart: pos[0],
+            gridRowStart: pos[1],
+            backgroundColor: Math.random() < 0.5 ? 'lightgreen' : 'lightblue',
+            animation: `chunksAnimation 20s ${(pos[0] + pos[1]) * 0.1}s infinite linear`
+          }}
+        />
+      )
+    })
+    this.setState({ backgroundChunks: backgroundChunks })
   }
 
   handleMapClick () {
@@ -190,6 +214,10 @@ class App extends Component {
           : <NoLab />}
 
         <Footer />
+
+        <div className="background">
+          {this.state.backgroundChunks}
+        </div>
       </div>
     )
   }
