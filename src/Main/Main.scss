@@ -1,16 +1,21 @@
 #Main {
 
-    display: flex;
-    flex-direction: column;
+    height: auto;
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-columns: [main-start] 100%;
     background-color: rgba(46, 46, 46, 0.9);
+
+    #Map {
+        grid-column: main-start;
+    }
 
     #Biomes {
 
         width: 90vw;
         height: 50vh;
-        grid-column: right-start / right-end;
-        grid-row: map-start;
-        margin: 0vw 5vw 20vw 5vw;
+        margin: 5vw 5vw 20vw 5vw;
+        grid-column: main-start;
 
     }
 
@@ -18,9 +23,8 @@
 
         width: 90vw;
         height: 50vh;
-        grid-column: left-start / left-end;
-        grid-row: map-start;
         margin: 0vw 5vw 0vw 5vw;
+        grid-column: main-start;
 
     }
 
@@ -30,11 +34,18 @@
         grid-template-rows: 10vh [map-start] 80vh [map-end] 30vh;
         background-color: rgba(46, 46, 46, 0.9);
 
+        #Map {
+            grid-column: middle-start / middle-end;
+            grid-row: map-start / map-end;
+        }
+
         #InfoButtons {
 
             width: 15vw;
             height: 80vh;
             margin: 0px;
+            grid-column: left-start / left-end;
+            grid-row: map-start;
     
         }
 
@@ -43,6 +54,8 @@
             width: 15vw;
             height: 80vh;
             margin: 0px;
+            grid-column: right-start / right-end;
+            grid-row: map-start;
 
         }
 

@@ -23,6 +23,10 @@
             h1 {
                 margin: 0;
             }
+
+            p {
+                text-align: justify;
+            }
             
         }
 
@@ -149,6 +153,18 @@
     }
 
     @media only screen and (min-width: 768px) {
+
+        .header-container {
+
+            header {
+
+                p {
+                    text-align: left;
+                }
+
+            }
+
+        }
 
         #explanation-container {
 

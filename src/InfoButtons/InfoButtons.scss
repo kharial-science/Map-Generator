@@ -4,9 +4,8 @@
     border-radius: 2vh;
     overflow: hidden;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
     .label-container {
 
@@ -82,11 +81,11 @@
         font-family: inherit;
     }
 
-}
-
-@media only screen and (min-width: 768px) {
-
-    #Explanation {
+    @media only screen and (min-width: 768px) {
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
 
         .label-container {
             label {
@@ -101,7 +100,7 @@
             }
     
         }
-
+    
     }
 
 }
