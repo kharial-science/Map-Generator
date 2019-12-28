@@ -6,7 +6,6 @@ class BiomeSelector extends Component {
   }
 
   render () {
-
     return (
       <div id={`biome-selector-${this.props.id}`} className='biome-selector'>
 

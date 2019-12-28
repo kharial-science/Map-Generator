@@ -5,6 +5,7 @@ import './App.css'
 import Main from './Main/Main'
 import Presentation from './Presentation/Presentation'
 import Lab from './Lab/Lab'
+import NoLab from './NoLab/NoLab'
 import InfoButtons from './InfoButtons/InfoButtons'
 import Biomes from './Biome/Biomes'
 import Edit from './Edit/Edit'
@@ -42,29 +43,29 @@ class App extends Component {
     this.handleProbabilityChange = this.handleProbabilityChange.bind(this)
   }
 
-  handleMapClick() {
+  handleMapClick () {
     this.setState({ map: expand(this.state.map, this.state.probabilities) })
   }
 
-  handleChunkClick(chunkID) {
+  handleChunkClick (chunkID) {
     if (this.state.editMode) {
       const newMap = this.state.map
-      const newChunk = { biome: document.getElementById('edit-biome-name-input').value + document.getElementById('edit-biome-color-input').value, status: 'expanding'}
+      const newChunk = { biome: document.getElementById('edit-biome-name-input').value + document.getElementById('edit-biome-color-input').value, status: 'expanding' }
       newMap[Math.floor(chunkID / this.state.mapWidth)][chunkID % this.state.mapWidth] = newChunk
       const newEditBiomes = this.state.editBiomes
-      if (!newEditBiomes.find(biome => biome.name === newChunk.biome)) newEditBiomes.push({ name: newChunk.biome, color: document.getElementById('edit-biome-color-input').value})
+      if (!newEditBiomes.find(biome => biome.name === newChunk.biome)) newEditBiomes.push({ name: newChunk.biome, color: document.getElementById('edit-biome-color-input').value })
       this.setState({
         map: newMap,
         editBiomes: newEditBiomes
       })
     }
   }
-  
-  handleBiomeInputChange(event, biomeID, inputClass) {
+
+  handleBiomeInputChange (event, biomeID, inputClass) {
     const newBiomeList = [...this.state.biomes]
-    if (inputClass !== "number") newBiomeList[biomeID][inputClass] = event.target.value
+    if (inputClass !== 'number') newBiomeList[biomeID][inputClass] = event.target.value
     else newBiomeList[biomeID][inputClass] = parseInt(event.target.value, 10)
-    this.setState({biomes: newBiomeList})
+    this.setState({ biomes: newBiomeList })
   }
 
   handleAddBiomeClick () {
@@ -73,8 +74,8 @@ class App extends Component {
     this.setState({ biomes: newBiomeList })
   }
 
-  handleMapWidthChange(event) {
-    this.setState({mapWidth: parseInt(event.target.value, 10)})
+  handleMapWidthChange (event) {
+    this.setState({ mapWidth: parseInt(event.target.value, 10) })
   }
 
   handleFixMapClick () {
@@ -86,7 +87,7 @@ class App extends Component {
   }
 
   handleReRenderClick () {
-    let mapBiomes = []
+    const mapBiomes = []
     Array.from(document.querySelector('#Biomes').getElementsByClassName('biome-selector')).forEach(biomeSelector => {
       mapBiomes.push({
         name: biomeSelector.getElementsByClassName('biome-name-input')[0].value,
@@ -102,22 +103,22 @@ class App extends Component {
     })
   }
 
-  handleEditClick() {
+  handleEditClick () {
     this.setState({ editMode: !this.state.editMode })
   }
 
-  handleProbabilityChange(selectedChunk, event) {
+  handleProbabilityChange (selectedChunk, event) {
     const newProbabilities = this.state.probabilities
     newProbabilities[selectedChunk] = parseFloat(event.target.value, 10)
     console.log(newProbabilities)
-    this.setState({ probabilities : newProbabilities })
+    this.setState({ probabilities: newProbabilities })
   }
 
   render () {
     return (
       <div id='App'>
         <Main>
-          <Map 
+          <Map
             map={this.state.map}
             mapBiomes={this.state.mapBiomes.concat(this.state.editBiomes)}
             handleMapClick={this.handleMapClick}
@@ -126,7 +127,7 @@ class App extends Component {
             editMode={this.state.editMode}
           />
 
-          <InfoButtons 
+          <InfoButtons
             mapWidth={this.state.mapWidth}
             handleMapWidthChange={this.handleMapWidthChange}
             handleFixMapClick={this.handleFixMapClick}
@@ -134,7 +135,7 @@ class App extends Component {
             handleSaveClick={this.handleSaveClick}
           />
 
-          <Biomes 
+          <Biomes
             handleAddBiomeClick={this.handleAddBiomeClick}
             handleBiomeInputChange={this.handleBiomeInputChange}
             biomes={this.state.biomes}
@@ -143,46 +144,50 @@ class App extends Component {
 
         <Presentation />
 
-        <Lab
-          map = {
-            <Map 
-              map={this.state.map}
-              mapBiomes={this.state.mapBiomes.concat(this.state.editBiomes)}
-              handleMapClick={this.handleMapClick}
-              handleChunkClick={this.handleChunkClick}
-              concatenateMap={concatenateMap}
-              editMode={this.state.editMode}
+        {window.innerWidth >= 768
+
+          ? <Lab
+            map={
+              <Map
+                map={this.state.map}
+                mapBiomes={this.state.mapBiomes.concat(this.state.editBiomes)}
+                handleMapClick={this.handleMapClick}
+                handleChunkClick={this.handleChunkClick}
+                concatenateMap={concatenateMap}
+                editMode={this.state.editMode}
+              />
+            }
+
+            parameters={[
+              <InfoButtons
+                mapWidth={this.state.mapWidth}
+                handleMapWidthChange={this.handleMapWidthChange}
+                handleFixMapClick={this.handleFixMapClick}
+                handleReRenderClick={this.handleReRenderClick}
+                handleSaveClick={this.handleSaveClick}
+              />,
+
+              <Biomes
+                handleAddBiomeClick={this.handleAddBiomeClick}
+                handleBiomeInputChange={this.handleBiomeInputChange}
+                biomes={this.state.biomes}
+              />,
+
+              <Edit
+                handleEditClick={this.handleEditClick}
+                editMode={this.state.editMode}
+              />,
+
+              <Probabilities
+                handleProbabilityChange={this.handleProbabilityChange}
+                probabilities={this.state.probabilities}
+              />,
+
+              <div className='end-div' />
+            ]}
             />
-          }
 
-          parameters = {[
-            <InfoButtons 
-              mapWidth={this.state.mapWidth}
-              handleMapWidthChange={this.handleMapWidthChange}
-              handleFixMapClick={this.handleFixMapClick}
-              handleReRenderClick={this.handleReRenderClick}
-              handleSaveClick={this.handleSaveClick}
-            />,
-
-            <Biomes 
-              handleAddBiomeClick={this.handleAddBiomeClick}
-              handleBiomeInputChange={this.handleBiomeInputChange}
-              biomes={this.state.biomes}
-            />,
-
-            <Edit
-              handleEditClick={this.handleEditClick}
-              editMode={this.state.editMode}
-            />,
-
-            <Probabilities
-              handleProbabilityChange={this.handleProbabilityChange}
-              probabilities={this.state.probabilities}
-            />,
-
-            <div className="end-div" />
-          ]}
-        />
+          : <NoLab />}
 
         <Footer />
       </div>

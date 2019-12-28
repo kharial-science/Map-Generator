@@ -1,17 +1,16 @@
 import _ from 'lodash'
 
-function expand(map, options) {
+function expand (map, options) {
   const newMap = _.cloneDeep(map)
   let x = 0
   for (const row of map) {
     let y = 0
     for (const chunk of row) {
       if (chunk && chunk.status === 'expanding') {
-
         const chunkRelatives = [
           [-2, -2], [-2, -1], [-2, 0], [-2, 1], [-2, 2],
           [-1, -2], [-1, -1], [-1, 0], [-1, 1], [-1, 2],
-          [0, -2], [0, -1], /*[0, 0],*/ [0, 1], [0, 2],
+          [0, -2], [0, -1], /* [0, 0], */ [0, 1], [0, 2],
           [1, -2], [1, -1], [1, 0], [1, 1], [1, 2],
           [2, -2], [2, 1], [2, 0], [2, 1], [2, 2]
         ]
@@ -31,7 +30,6 @@ function expand(map, options) {
           }
           newMap[x][y].status = 'done'
         })
-
       }
       y++
     }
@@ -40,7 +38,7 @@ function expand(map, options) {
   return newMap
 }
 
-function generate(size = 40, type = 'chunkArray', availableBiomes = ['ocean', 'ocean', 'ocean', 'plains', 'plains', 'plains']) {
+function generate (size = 40, type = 'chunkArray', availableBiomes = ['ocean', 'ocean', 'ocean', 'plains', 'plains', 'plains']) {
   const row = new Array(size).fill(null)
   const map = new Array(size).fill(null).map(() => row.slice())
 
@@ -56,7 +54,7 @@ function generate(size = 40, type = 'chunkArray', availableBiomes = ['ocean', 'o
   return concatenateMap(map)
 }
 
-function fix(map) {
+function fix (map) {
   const newMap = _.cloneDeep(map)
   let x = 0
   for (const row of map) {
@@ -87,7 +85,7 @@ function fix(map) {
   return newMap
 }
 
-function isNullChunkInMap(map) {
+function isNullChunkInMap (map) {
   for (const row of map) {
     for (const chunk of row) {
       if (!chunk) {
@@ -98,13 +96,13 @@ function isNullChunkInMap(map) {
   return false
 }
 
-function findRandomChunk(size) {
+function findRandomChunk (size) {
   const x = Math.floor(Math.random() * size)
   const y = Math.floor(Math.random() * size)
   return { x, y }
 }
 
-function concatenateMap(nestedArrays) {
+function concatenateMap (nestedArrays) {
   let concatenatedArray = []
   concatenatedArray = concatenatedArray.concat(...nestedArrays)
   return concatenatedArray

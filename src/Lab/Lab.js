@@ -6,7 +6,7 @@ const Lab = (props) => {
   return (
     <div id='Lab'>
       {props.map}
-      <div id="parameters">
+      <div id='parameters'>
         {props.parameters}
       </div>
     </div>
