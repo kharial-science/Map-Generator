@@ -11,6 +11,7 @@ class Presentation extends Component {
 
   componentDidMount () {
     const observer = new IntersectionObserver((entries, observer) => {
+      console.log('test')
       if (entries[0].isIntersecting) {
         if (window.innerWidth < 768) {
           document.getElementsByClassName('exp-one')[0].style.animation = '15s linear -5s infinite slide'
@@ -51,7 +52,7 @@ class Presentation extends Component {
 
         observer.unobserve(document.querySelector('#explanation-container'))
       }
-    }, { threshold: 1 })
+    })
 
     observer.observe(document.querySelector('#explanation-container'))
   }
