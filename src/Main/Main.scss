@@ -5,6 +5,7 @@
     grid-auto-rows: auto;
     grid-template-columns: [main-start] 100%;
     background-color: rgba(46, 46, 46, 0.9);
+    overflow: hidden;
 
     #Map {
         grid-column: main-start;

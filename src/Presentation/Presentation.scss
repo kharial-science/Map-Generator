@@ -42,6 +42,7 @@
         justify-content: space-evenly;
 
         .Explanation {
+            
             width: 100vw;
             position: absolute;
             opacity: 0;
@@ -50,8 +51,7 @@
 
             display: grid;
             grid-template-columns: [text-start] 1fr [number-pos] 1fr [image-start] 1fr 1fr;
-            grid-template-rows: 60px;
-
+            grid-template-rows: 60px 180px;
 
             &.shown {
 
@@ -88,6 +88,8 @@
             }
 
             p {
+                width: 90%;
+                align-self: right;
                 grid-column: text-start / span 2;
                 font-size: 20px;
                 text-align: right;
@@ -97,9 +99,9 @@
             .image {
                 margin: 20px auto;
                 grid-column: span 2;
-                width: 9vw;
-                height: 9vw;
                 display: grid;
+                width: 150px;
+                height: 150px;
                 grid-template-columns: repeat(5, 1fr);
                 border: dashed 1px rgba(0, 0, 0, 0.1);
                 opacity: 0;
@@ -138,18 +140,6 @@
 
         }
 
-        .exp-one {
-            animation: 9s linear 0s infinite slide;
-        }
-
-        .exp-two {
-            animation: 9s linear 3s infinite slide;
-        }
-
-        .exp-three {
-            animation: 9s linear 6s infinite slide;
-        }
-
     }
 
     @media only screen and (min-width: 768px) {
@@ -179,6 +169,14 @@
                 grid-template-rows: 60px;
                 animation: none;
 
+                p {
+                    width: 100%;
+                }
+
+                .image {
+                    width: 9vw;
+                    height: 9vw;
+                }
 
             }
 

@@ -14,6 +14,12 @@ class Presentation extends Component {
 
       if (entries[0].isIntersecting) {
 
+        if (window.innerWidth < 768) {
+          document.getElementsByClassName('exp-one')[0].style.animation = "15s linear -5s infinite slide"
+          document.getElementsByClassName('exp-two')[0].style.animation = "15s linear 0s infinite slide"
+          document.getElementsByClassName('exp-three')[0].style.animation = "15s linear 5s infinite slide"
+        }
+
         let animationDelay = 0
 
         Array.from(document.getElementsByClassName('Explanation')).forEach(element => {
