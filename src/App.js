@@ -94,7 +94,7 @@ class App extends Component {
 
   handleAddBiomeClick () {
     const newBiomeList = [...this.state.biomes]
-    newBiomeList.push({ name: 'nom', color: 'couleur', number: 0 })
+    newBiomeList.push({ name: 'name', color: 'color', number: 0 })
     this.setState({ biomes: newBiomeList })
   }
 

@@ -34,7 +34,7 @@
                 display: flex;
                 flex-direction: column;
                 font-family: inherit;
-                font-size: 5vw;
+                font-size: 7vw;
                 cursor: pointer;
                 text-transform: uppercase;
                 letter-spacing: 1px;
@@ -45,9 +45,9 @@
         }
 
         input {
-            width: 50%;
+            width: 100%;
             display: block;
-            padding: 5px;
+            // padding: 5px;
             border: none;
             border-radius: 2px;
             font-family: inherit;
@@ -96,6 +96,13 @@
                 label {
 
                     font-size: 1.3vw;
+
+                }
+
+                input {
+
+                    width: 50%;
+                    padding: 5px;
 
                 }
 
