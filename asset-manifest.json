@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Map-Generator/static/css/main.3b478497.chunk.css",
+    "main.css": "/Map-Generator/static/css/main.289e98bc.chunk.css",
     "main.js": "/Map-Generator/static/js/main.05b09468.chunk.js",
     "main.js.map": "/Map-Generator/static/js/main.05b09468.chunk.js.map",
     "runtime~main.js": "/Map-Generator/static/js/runtime~main.ecccff6e.js",
@@ -8,9 +8,9 @@
     "static/js/2.31b871d8.chunk.js": "/Map-Generator/static/js/2.31b871d8.chunk.js",
     "static/js/2.31b871d8.chunk.js.map": "/Map-Generator/static/js/2.31b871d8.chunk.js.map",
     "index.html": "/Map-Generator/index.html",
-    "precache-manifest.e5688d7e48b8fd386abc5907a2186280.js": "/Map-Generator/precache-manifest.e5688d7e48b8fd386abc5907a2186280.js",
+    "precache-manifest.ce8c33c9ea2c3d56dfdc3f5ff5eeb747.js": "/Map-Generator/precache-manifest.ce8c33c9ea2c3d56dfdc3f5ff5eeb747.js",
     "service-worker.js": "/Map-Generator/service-worker.js",
-    "static/css/main.3b478497.chunk.css.map": "/Map-Generator/static/css/main.3b478497.chunk.css.map",
+    "static/css/main.289e98bc.chunk.css.map": "/Map-Generator/static/css/main.289e98bc.chunk.css.map",
     "static/media/App.css": "/Map-Generator/static/media/Main_background.3bc6d47a.jpg",
     "static/media/website.png": "/Map-Generator/static/media/website.e535b045.png"
   }

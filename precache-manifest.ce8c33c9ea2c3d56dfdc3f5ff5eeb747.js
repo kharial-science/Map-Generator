@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ddcdde51bf55ae8379dbc685a460f681",
+    "revision": "461344a87a15f1518df70d4277cf0a00",
     "url": "/Map-Generator/index.html"
   },
   {
-    "revision": "315ba7f7b8779df1b8ae",
-    "url": "/Map-Generator/static/css/main.3b478497.chunk.css"
+    "revision": "983af66c4501e8a99d38",
+    "url": "/Map-Generator/static/css/main.289e98bc.chunk.css"
   },
   {
     "revision": "aab220de6fa3e9efcc4f",
     "url": "/Map-Generator/static/js/2.31b871d8.chunk.js"
   },
   {
-    "revision": "315ba7f7b8779df1b8ae",
+    "revision": "983af66c4501e8a99d38",
     "url": "/Map-Generator/static/js/main.05b09468.chunk.js"
   },
   {
