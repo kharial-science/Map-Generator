@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/Map-Generator/static/css/main.5b93e412.chunk.css",
-    "main.js": "/Map-Generator/static/js/main.02d4c626.chunk.js",
-    "main.js.map": "/Map-Generator/static/js/main.02d4c626.chunk.js.map",
+    "main.css": "/Map-Generator/static/css/main.c0bf12f8.chunk.css",
+    "main.js": "/Map-Generator/static/js/main.f40e034b.chunk.js",
+    "main.js.map": "/Map-Generator/static/js/main.f40e034b.chunk.js.map",
     "runtime~main.js": "/Map-Generator/static/js/runtime~main.ecccff6e.js",
     "runtime~main.js.map": "/Map-Generator/static/js/runtime~main.ecccff6e.js.map",
-    "static/js/2.b9ede809.chunk.js": "/Map-Generator/static/js/2.b9ede809.chunk.js",
-    "static/js/2.b9ede809.chunk.js.map": "/Map-Generator/static/js/2.b9ede809.chunk.js.map",
+    "static/js/2.31b871d8.chunk.js": "/Map-Generator/static/js/2.31b871d8.chunk.js",
+    "static/js/2.31b871d8.chunk.js.map": "/Map-Generator/static/js/2.31b871d8.chunk.js.map",
     "index.html": "/Map-Generator/index.html",
-    "precache-manifest.0a90d24a23314b21b2a8ee20e8e003ec.js": "/Map-Generator/precache-manifest.0a90d24a23314b21b2a8ee20e8e003ec.js",
+    "precache-manifest.1fd2a57e805ce81e665df8a37eb2b261.js": "/Map-Generator/precache-manifest.1fd2a57e805ce81e665df8a37eb2b261.js",
     "service-worker.js": "/Map-Generator/service-worker.js",
-    "static/css/main.5b93e412.chunk.css.map": "/Map-Generator/static/css/main.5b93e412.chunk.css.map"
+    "static/css/main.c0bf12f8.chunk.css.map": "/Map-Generator/static/css/main.c0bf12f8.chunk.css.map",
+    "static/media/App.css": "/Map-Generator/static/media/Main_background.3bc6d47a.jpg",
+    "static/media/website.png": "/Map-Generator/static/media/website.e535b045.png"
   }
 }
