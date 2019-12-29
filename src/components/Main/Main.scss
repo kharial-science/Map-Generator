@@ -29,7 +29,7 @@
 
     }
 
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: 768px) and (orientation: landscape) {
         display: grid;
         grid-template-columns: 1fr [right-start] 15vw [right-end] 1fr [middle-start] 80vh [middle-end] 1fr [left-start] 15vw [left-end] 1fr;
         grid-template-rows: 10vh [map-start] 80vh [map-end] 30vh;

@@ -81,7 +81,7 @@
         font-family: inherit;
     }
 
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: 768px) and (orientation: landscape) {
     
         display: flex;
         flex-direction: column;

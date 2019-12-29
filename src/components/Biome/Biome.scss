@@ -87,7 +87,32 @@
 
     }
 
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: 768px) and (orientation: portrait) {
+
+        .biome-selector {
+
+            .label-container {
+
+                label {
+
+                    font-size: 3vw;
+
+                }
+
+                input {
+
+                    width: 50%;
+                    padding: 5px;
+
+                }
+
+            }
+            
+        }
+
+    }
+
+    @media only screen and (min-width: 768px) and (orientation: landscape) {
 
         .biome-selector {
 
