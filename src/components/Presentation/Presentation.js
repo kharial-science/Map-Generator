@@ -11,9 +11,9 @@ class Presentation extends Component {
 
   componentDidMount () {
     const observer = new IntersectionObserver((entries, observer) => {
-      console.log('test')
+      console.log(window.screen.orientation.type)
       if (entries[0].isIntersecting) {
-        if (window.innerWidth < 768) {
+        if (window.innerWidth < 768 || window.screen.orientation.type == "portrait-secondary" || window.screen.orientation.type == "portrait-primary") {
           document.getElementsByClassName('exp-one')[0].style.animation = '15s linear -5s infinite slide'
           document.getElementsByClassName('exp-two')[0].style.animation = '15s linear 0s infinite slide'
           document.getElementsByClassName('exp-three')[0].style.animation = '15s linear 5s infinite slide'

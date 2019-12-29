@@ -168,7 +168,7 @@ class App extends Component {
 
         <Presentation />
 
-        {window.innerWidth >= 768
+        {window.innerWidth >= 768 && (window.screen.orientation.type == "landscape-primary" || window.screen.orientation.type == "landscape-secondary")
 
           ? <Lab
             map={
