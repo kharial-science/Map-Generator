@@ -65,6 +65,12 @@ class App extends Component {
       )
     })
     this.setState({ backgroundChunks: backgroundChunks })
+
+    window.addEventListener("orientationchange", function() {
+      console.log('orientation changed')
+      window.location.reload()
+    });
+
   }
 
   handleMapClick () {
